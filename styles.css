@@ -350,6 +350,13 @@ footer .social-links a {
   transform: scale(1.1);
   opacity: 1;
 }
+.section-image {
+  max-width: 50%;
+  border-radius: 12px;
+  margin: 30px auto 0;
+  display: block;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
 
 
 
