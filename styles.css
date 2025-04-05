@@ -331,6 +331,25 @@ footer .social-links a {
 .social-top a.x:hover {
   background-color: #9b7676;
 }
+/* === SOCIAL ICONS BOTTOM === */
+.social-bottom {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.social-bottom img {
+  width: 24px;
+  height: 24px;
+  opacity: 0.8;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.social-bottom img:hover {
+  transform: scale(1.1);
+  opacity: 1;
+}
 
 
 
