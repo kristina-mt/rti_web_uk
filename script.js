@@ -178,35 +178,43 @@ const translations = {
       "send-button": "Wyślij",
     }
   };
-  // === Pašto paslaugos vertimai ===
+ // === Pašto paslaugos vertimai ===
 const postalServiceContent = {
     en: `
+  
       <h2>Mail-in Service</h2>
       <p>We offer a unique <strong>mail-in service for lock repair, programming, and key duplication</strong>. Simply send us your car or motorcycle lock – we’ll repair it, reprogram it, and ship it back.</p>
       <p>We serve clients <strong>worldwide</strong> – including the UK, Lithuania, Europe, USA, Australia, and more.</p>
       <p><strong>Send it – we fix it – we send it back!</strong></p>
+     
     `,
     lt: `
+      
       <h2>Užsakymas paštu</h2>
       <p>Siūlome unikalią paslaugą – <strong>spynų remontą, programavimą ir raktų gamybą paštu</strong>. Jums tereikia atsiųsti automobilio ar motociklo spyną mums – mes ją suremontuosime, priprogramuosime ir grąžinsime atgal.</p>
       <p>Aptarnaujame <strong>visame pasaulyje</strong> – Lietuva, Jungtinė Karalystė, Europa, JAV, Australija ir kt.</p>
       <p><strong>Atsiųskite – suremontuosime – grąžinsime!</strong></p>
+      
     `,
     ru: `
+      
       <h2>Обслуживание по почте</h2>
       <p>Мы предлагаем уникальную услугу – <strong>ремонт, программирование замков и изготовление ключей по почте</strong>. Просто отправьте нам замок от автомобиля или мотоцикла – мы его отремонтируем, запрограммируем и вернём обратно.</p>
       <p>Обслуживаем клиентов <strong>по всему миру</strong> – Великобритания, Литва, Европа, США, Австралия и др.</p>
       <p><strong>Отправьте – мы починим – и вернём!</strong></p>
+      
     `,
     pl: `
+      
       <h2>Usługa pocztowa</h2>
       <p>Oferujemy unikalną usługę – <strong>naprawę, programowanie zamków i dorabianie kluczy przez wysyłkę</strong>. Wystarczy wysłać do nas zamek samochodowy lub motocyklowy – naprawimy go, zaprogramujemy i odeślemy z powrotem.</p>
       <p>Obsługujemy klientów <strong>na całym świecie</strong> – Wielka Brytania, Litwa, Europa, USA, Australia i inne.</p>
       <p><strong>Wyślij – naprawimy – odeślemy!</strong></p>
+      
     `
   };
   
-  // Įkeliame pašto paslaugos tekstą pagal kalbą
+  // Į keliame pašto paslaugos tekstą pagal kalbą
   function updatePostalService(lang) {
     const section = document.getElementById("postalService");
     if (section && postalServiceContent[lang]) {
