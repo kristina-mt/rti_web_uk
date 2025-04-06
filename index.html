@@ -184,7 +184,7 @@
       </div>
     </header>
     <section id="postalService"></section>
-    <section class="about">
+    < class="about">
       <h2 data-i18n="about-title"></h2>
       <p data-i18n="about-text"></p>
     
@@ -246,13 +246,18 @@
           <p><strong>Email:</strong> rtiautolocksmith@gmail.com</p>
           <p><strong>Region:</strong> UK-wide coverage</p>
         </div>
+    
+        <!-- ✅ TIK viena forma -->
         <form name="contact" method="POST" data-netlify="true">
           <input type="hidden" name="form-name" value="contact">
-          <input type="text" name="name" placeholder="Your name" required>
-          <input type="email" name="email" placeholder="Your email" required>
-          <textarea name="message" placeholder="Your message" required></textarea>
-          <button type="submit">Send</button>
-        </form>
+          
+          <!-- Formos laukai -->
+          <input
+            type="text"
+            name="name"
+            placeholder="Your name"
+            required
+          />
           <input
             type="email"
             name="email"
