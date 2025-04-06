@@ -194,6 +194,7 @@ const postalServiceContent = {
     <p>Siūlome unikalią paslaugą – <strong>spynų remontą, programavimą ir raktų gamybą paštu</strong>. Jums tereikia atsiųsti automobilio ar motociklo spyną mums – mes ją suremontuosime, priprogramuosime ir grąžinsime atgal.</p>
     <p>Aptarnaujame <strong>visame pasaulyje</strong> – Lietuva, Jungtinė Karalystė, Europa, JAV, Australija ir kt.</p>
     <p><strong>Atsiųskite – suremontuosime – grąžinsime!</strong></p>
+    <a href="docs/mail-in-form.pdf" target="_blank" class="btn">📄 Download Order Form (PDF)</a>
   `,
   ru: `
     <img src="images/mail-global.png" alt="Почтовый сервис замков" style="max-width: 50px; border-radius: 8px; margin-bottom: 20px;" />
@@ -201,6 +202,7 @@ const postalServiceContent = {
     <p>Мы предлагаем уникальную услугу – <strong>ремонт, программирование замков и изготовление ключей по почте</strong>. Просто отправьте нам замок от автомобиля или мотоцикла – мы его отремонтируем, запрограммируем и вернём обратно.</p>
     <p>Обслуживаем клиентов <strong>по всему миру</strong> – Великобритания, Литва, Европа, США, Австралия и др.</p>
     <p><strong>Отправьте – мы починим – и вернём!</strong></p>
+    <a href="docs/mail-in-form.pdf" target="_blank" class="btn">📄 Download Order Form (PDF)</a>
   `,
   pl: `
     <img src="images/mail-global.png" alt="Usługa naprawy zamków pocztą" style="max-width: 50px; border-radius: 8px; margin-bottom: 20px;" />
@@ -208,6 +210,7 @@ const postalServiceContent = {
     <p>Oferujemy unikalną usługę – <strong>naprawę, programowanie zamków i dorabianie kluczy przez wysyłkę</strong>. Wystarczy wysłać do nas zamek samochodowy lub motocyklowy – naprawimy go, zaprogramujemy i odeślemy z powrotem.</p>
     <p>Obsługujemy klientów <strong>na całym świecie</strong> – Wielka Brytania, Litwa, Europa, USA, Australia i inne.</p>
     <p><strong>Wyślij – naprawimy – odeślemy!</strong></p>
+    <a href="docs/mail-in-form.pdf" target="_blank" class="btn">📄 Download Order Form (PDF)</a>
   `
 };
 
