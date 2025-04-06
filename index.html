@@ -248,30 +248,17 @@
           <p><strong>Region:</strong> UK-wide coverage</p>
         </div>
     
-        <!-- ✅ TIK viena forma -->
-        <form name="contact" method="POST" data-netlify="true">
-          <input type="hidden" name="form-name" value="contact">
-          
-          <!-- Formos laukai -->
-          <input
-            type="text"
-            name="name"
-            placeholder="Your name"
-            required
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            data-i18n-placeholder="email"
-            required
-          />
-          <textarea
-            name="message"
-            placeholder="Message"
-            data-i18n-placeholder="message"
-            required
-          ></textarea>
+        <form name="contact" netlify>
+          <p>
+            <label>Name <input type="text" name="name" /></label>
+          </p>
+          <p>
+            <label>Email <input type="email" name="email" /></label>
+          </p>
+          <p>
+            <button type="submit">Send</button>
+          </p>
+        </form>
           <button type="submit" data-i18n="send-button">Send</button>
         </form>
       </div>
