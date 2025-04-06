@@ -186,6 +186,7 @@ const postalServiceContent = {
     <p>We offer a unique <strong>mail-in service for lock repair, programming, and key duplication</strong>. Simply send us your car or motorcycle lock – we’ll repair it, reprogram it, and ship it back.</p>
     <p>We serve clients <strong>worldwide</strong> – including the UK, Lithuania, Europe, USA, Australia, and more.</p>
     <p><strong>Send it – we fix it – we send it back!</strong></p>
+    <a href="docs/mail-in-form.pdf" target="_blank" class="btn">📄 Download Order Form (PDF)</a>
   `,
   lt: `
     <img src="images/mail-global.png" alt="Spynų remontas paštu" style="max-width: 50px; border-radius: 8px; margin-bottom: 20px;" />

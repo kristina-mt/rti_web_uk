@@ -7,16 +7,13 @@
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <link rel="canonical" href="https://www.rtiautolocksmith.co.uk" />
-    <link rel="canonical" href="https://www.rtiautolocksmith.co.uk" />
     <link rel="preload" as="image" href="images/logo.webp">
     <script defer src="script.js"></script>
 
     <!-- SEO Meta -->
     <meta
-      name="description"
-      content="24/7 UK-wide car locksmith service. Car keys,motorcycle, vans, lorries – programming, duplication, ECU remap and more."
-    />
-    <meta
+  name="description"
+  content="24/7 UK-wide car locksmith service. Car keys, motorcycle, vans, lorries – programming, duplication, ECU remap and more."
       name="keywords"
       content="auto locksmith,
       car locksmith UK,
@@ -32,9 +29,19 @@
       mobile auto locksmith,
       emergency unlocking car door,
       car key services North West UK,
-      RTi Auto Locksmith, postal service, auto locksmith, car key lost, car key programming, van locksmith, motorcycle key, emergency lockout UK, Wigan, Bolton, Manchester"
-    />
-    <meta name="author" content="RTi Auto Locksmith" />
+      RTi Auto Locksmith, postal service, auto locksmith, car key lost, car key programming, van locksmith, motorcycle key, emergency lockout UK, Wigan, Bolton, Manchester,
+      auto locksmith,
+      car lock by mail,
+      ship lock repair,
+      postal ignition service,
+      international car key service,
+      lock reprogramming worldwide,
+      ECU repair mail-in,
+      spynų remontas paštu,
+      auto locksmith UK,
+      Lithuania,
+      EU shipping locksmith"/>    
+      <meta name="author" content="RTi Auto Locksmith" />
 
     <!-- Open Graph -->
     <meta
@@ -180,7 +187,8 @@
     <section class="about">
       <h2 data-i18n="about-title"></h2>
       <p data-i18n="about-text"></p>
-    </section>
+    
+    
 
     <section class="services">
       <h2 data-i18n="services-title"></h2>
@@ -238,18 +246,13 @@
           <p><strong>Email:</strong> rtiautolocksmith@gmail.com</p>
           <p><strong>Region:</strong> UK-wide coverage</p>
         </div>
-        <form
-          action="https://formsubmit.co/rti.autolocksmith@gmail.co.uk"
-          method="POST"
-        >
-          <input type="hidden" name="_captcha" value="false" />
-          <input
-            type="text"
-            name="name"
-            placeholder="Name"
-            data-i18n-placeholder="name"
-            required
-          />
+        <form name="contact" method="POST" data-netlify="true">
+          <input type="hidden" name="form-name" value="contact">
+          <input type="text" name="name" placeholder="Your name" required>
+          <input type="email" name="email" placeholder="Your email" required>
+          <textarea name="message" placeholder="Your message" required></textarea>
+          <button type="submit">Send</button>
+        </form>
           <input
             type="email"
             name="email"
