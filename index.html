@@ -95,7 +95,7 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
   />
 
-  <body>
+  <div>
     <div class="social-top">
       <a
         href="https://www.facebook.com/@rtiauto"
@@ -251,7 +251,8 @@
         </div>
     
         <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks.html">
-          <input type="hidden" name="form-name" value="contact" />
+          <input type="hidden" name="submitted-at" id="submitted-at" />
+       <input type="hidden" name="form-name" value="contact" />
           <p class="hidden">
             <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
           </p>
@@ -270,7 +271,9 @@
             <textarea name="message" placeholder="Message" required></textarea>
             <span class="error-message" data-error-for="message"></span>
           </div>
-        
+          <input type="hidden" name="reply-to" value="email" />
+          <input type="hidden" name="subject" value="Contact Form Submission" />
+          <input type="hidden" name="redirect" value="/thanks.html" />
           <button type="submit" data-i18n="send-button">Send</button>
         </form>
         
@@ -324,17 +327,19 @@
         href="https://g.co/kgs/jAE13ib"
         target="_blank"
         rel="noopener"
-        title="Google"
-      >
-        <img src="images/google-icon.png" alt="Google" class="social-icon" />
+        title="Google">
+       <img src="images/google-icon.png" alt="Google" class="social-icon" />,
       </a>
-            </div>
-          </footer>
-          
-        </a>
-      </div>
+    </div>
+      <p data-i18n="footer-text"></p>
+      <p data-i18n="footer-credits"></p>
+      <p data-i18n="footer-privacy"></p>
+      <p data-i18n="footer-terms"></p>
+      <p data-i18n="footer-copyright"></p>
     </footer>
-
+  </div>
     <button id="backToTop">↑</button>
+    <script src="translations.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>

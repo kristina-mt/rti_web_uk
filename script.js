@@ -269,100 +269,80 @@ if (backToTop) {
   backToTop.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 });
-document.addEventListener("DOMContentLoaded", () => {
-    const sections = document.querySelectorAll("section");
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.1
+window.addEventListener("DOMContentLoaded", () => {
+  const lang = localStorage.getItem("siteLang") || navigator.language.slice(0, 2);
+  const finalLang = ["en", "lt", "ru", "pl"].includes(lang) ? lang : "en";
+  window.savedLang = finalLang;
+
+  translatePage(finalLang);
+  document.querySelector(`.lang-switcher button[onclick="switchLang('${finalLang}')"]`)?.classList.add("active");
+
+  // Rodyti „back to top“
+  const backToTop = document.getElementById("backToTop");
+  if (backToTop) {
+    window.addEventListener("scroll", () => {
+      backToTop.style.display = window.scrollY > 200 ? "block" : "none";
     });
-  
-    document.querySelector("form").addEventListener("submit", function (e) {
+    backToTop.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // Pridėti datą ir laiką
+  const now = new Date().toLocaleString("en-GB");
+  const hiddenDate = document.getElementById("submitted-at");
+  if (hiddenDate) hiddenDate.value = now;
+
+  // Formos validacija su kalba
+  const t = translations[finalLang];
+  const form = document.querySelector("form");
+  if (form) {
+    form.addEventListener("submit", function (e) {
       const name = document.querySelector('input[name="name"]');
       const email = document.querySelector('input[name="email"]');
       const message = document.querySelector('textarea[name="message"]');
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  
-      if (!name.value || !email.value || !message.value) {
-        alert("Please fill in all fields.");
-        e.preventDefault();
-        return;
+
+      const nameError = document.querySelector('[data-error-for="name"]');
+      const emailError = document.querySelector('[data-error-for="email"]');
+      const messageError = document.querySelector('[data-error-for="message"]');
+
+      nameError.textContent = "";
+      emailError.textContent = "";
+      messageError.textContent = "";
+
+      let hasError = false;
+      if (!name.value.trim()) {
+        nameError.textContent = t.required;
+        hasError = true;
       }
-  
-      if (!emailRegex.test(email.value)) {
-        alert("Please enter a valid email address.");
-        e.preventDefault();
-        return;
+      if (!email.value.trim()) {
+        emailError.textContent = t.required;
+        hasError = true;
+      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+        emailError.textContent = t.invalidEmail;
+        hasError = true;
+      }
+      if (!message.value.trim()) {
+        messageError.textContent = t.required;
+        hasError = true;
+      }
+      if (hasError) e.preventDefault();
+    });
+  }
+
+  // Placeholder'iai
+  document.querySelector('input[name="name"]').placeholder = t.name;
+  document.querySelector('input[name="email"]').placeholder = t.email;
+  document.querySelector('textarea[name="message"]').placeholder = t.message;
+  document.querySelector('[data-i18n="send-button"]').textContent = t["send-button"];
+
+  // Animacijos (section visibility)
+  const sections = document.querySelectorAll("section");
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
       }
     });
-    // Kalbų vertimai
-const translations = {
-  en: {
-    required: "Please fill in this field.",
-    invalidEmail: "Please enter a valid email address.",
-  },
-  lt: {
-    required: "Prašome užpildyti šį laukelį.",
-    invalidEmail: "Įveskite teisingą el. pašto adresą.",
-  },
-  pl: {
-    required: "Proszę wypełnić to pole.",
-    invalidEmail: "Wprowadź poprawny adres e-mail.",
-  },
-  ru: {
-    required: "Пожалуйста, заполните это поле.",
-    invalidEmail: "Введите действительный адрес электронной почты.",
-  },
-};
-
-document.querySelector("form").addEventListener("submit", function (e) {
-  const lang = window.savedLang || "en";
-  const t = translations[lang];
-
-  const name = document.querySelector('input[name="name"]');
-  const email = document.querySelector('input[name="email"]');
-  const message = document.querySelector('textarea[name="message"]');
-
-  const nameError = document.querySelector('[data-error-for="name"]');
-  const emailError = document.querySelector('[data-error-for="email"]');
-  const messageError = document.querySelector('[data-error-for="message"]');
-
-  // Išvalom senas klaidas
-  nameError.textContent = "";
-  emailError.textContent = "";
-  messageError.textContent = "";
-
-  let hasError = false;
-
-  if (!name.value.trim()) {
-    nameError.textContent = t.required;
-    hasError = true;
-  }
-
-  if (!email.value.trim()) {
-    emailError.textContent = t.required;
-    hasError = true;
-  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
-    emailError.textContent = t.invalidEmail;
-    hasError = true;
-  }
-
-  if (!message.value.trim()) {
-    messageError.textContent = t.required;
-    hasError = true;
-  }
-
-  if (hasError) {
-    e.preventDefault();
-  }
+  }, { threshold: 0.1 });
+  sections.forEach((section) => observer.observe(section));
 });
-
-  
-    sections.forEach((section) => observer.observe(section));
-  });
-  

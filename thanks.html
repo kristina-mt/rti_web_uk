@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Thank you!</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #0f1114;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .box {
+      background: #222;
+      padding: 2rem;
+      border-radius: 8px;
+      text-align: center;
+    }
+    .lang-buttons button {
+      margin: 0.5rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1 id="thanks-title">Thank you!</h1>
+    <p id="thanks-msg">Your message has been submitted.</p>
+    <a href="/" style="color: #ffd700;">← Back to website</a>
+    <div class="lang-buttons">
+      <button onclick="setLang('en')">EN</button>
+      <button onclick="setLang('lt')">LT</button>
+      <button onclick="setLang('pl')">PL</button>
+      <button onclick="setLang('ru')">RU</button>
+    </div>
+  </div>
+
+  <script>
+    const translations = {
+      en: {
+        title: "Thank you!",
+        msg: "Your message has been submitted.",
+      },
+      lt: {
+        title: "Ačiū!",
+        msg: "Jūsų žinutė išsiųsta.",
+      },
+      pl: {
+        title: "Dziękujemy!",
+        msg: "Twoja wiadomość została wysłana.",
+      },
+      ru: {
+        title: "Спасибо!",
+        msg: "Ваше сообщение было отправлено.",
+      },
+    };
+
+    function setLang(lang) {
+      localStorage.setItem("lang", lang);
+      const t = translations[lang];
+      document.getElementById("thanks-title").textContent = t.title;
+      document.getElementById("thanks-msg").textContent = t.msg;
+    }
+
+    // Detect saved language
+    const saved = localStorage.getItem("lang") || "en";
+    setLang(saved);
+  </script>
+</body>
+</html>
