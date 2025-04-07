@@ -8,6 +8,11 @@ const translations = {
       invalidEmail: "Please enter a valid email address.",
       thanksTitle: "Thank you!",
       thanksMsg: "Your message has been submitted.",
+      "footer-text": "© 2025 RTi Auto Locksmith. All rights reserved.",
+      "footer-credits": "Website created by ...",
+      "footer-terms": "Terms & Conditions",
+      "footer-privacy": "Privacy Policy",
+      "footer-copyright": "Copyright © All rights reserved"
     },
     lt: {
       name: "Jūsų vardas",
@@ -18,6 +23,11 @@ const translations = {
       invalidEmail: "Įveskite teisingą el. pašto adresą.",
       thanksTitle: "Ačiū!",
       thanksMsg: "Jūsų žinutė išsiųsta.",
+      "footer-text": "© 2025 RTi Auto Raktai. Visos teisės saugomos.",
+      "footer-credits": "Svetainę sukūrė ...",
+      "footer-terms": "Taisyklės ir sąlygos",
+      "footer-privacy": "Privatumo politika",
+      "footer-copyright": "Autorių teisės © Visos teisės saugomos"
     },
     pl: {
       name: "Twoje imię",
@@ -28,6 +38,11 @@ const translations = {
       invalidEmail: "Wprowadź poprawny adres e-mail.",
       thanksTitle: "Dziękujemy!",
       thanksMsg: "Twoja wiadomość została wysłana.",
+      "footer-text": "© 2025 RTi Auto Locksmith. Wszelkie prawa zastrzeżone.",
+      "footer-credits": "Strona stworzona przez ...",
+      "footer-terms": "Regulamin",
+      "footer-privacy": "Polityka prywatności",
+      "footer-copyright": "Copyright © Wszystkie prawa zastrzeżone"
     },
     ru: {
       name: "Ваше имя",
@@ -38,23 +53,11 @@ const translations = {
       invalidEmail: "Введите действительный адрес электронной почты.",
       thanksTitle: "Спасибо!",
       thanksMsg: "Ваше сообщение было отправлено.",
+      "footer-text": "© 2025 RTi Auto Locksmith. Все права защищены.",
+      "footer-credits": "Сайт создан ...",
+      "footer-terms": "Правила и условия",
+      "footer-privacy": "Политика конфиденциальности",
+      "footer-copyright": "Copyright © Все права защищены"
     }
-  };
-  const translations = {
-    en: {
-      "footer-text": "© 2025 RTi Auto Locksmith. All rights reserved.",
-      "footer-credits": "Website created by ...",
-      "footer-terms": "Terms & Conditions",
-      "footer-privacy": "Privacy Policy",
-      "footer-copyright": "Copyright © All rights reserved",
-    },
-    lt: {
-      "footer-text": "© 2025 RTi Auto Raktai. Visos teisės saugomos.",
-      "footer-credits": "Svetainę sukūrė ...",
-      "footer-terms": "Taisyklės ir sąlygos",
-      "footer-privacy": "Privatumo politika",
-      "footer-copyright": "Autorių teisės © Visos teisės saugomos",
-    },
-    // prireikus rusų, lenkų – papildom linijas
   };
   
