@@ -1,1 +1,4 @@
-<meta name="robots" content="index, follow" />
+User-agent: *
+Allow: /
+
+Sitemap: https://www.rtiautolocksmith.co.uk/sitemap.xml
