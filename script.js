@@ -209,10 +209,10 @@ const postalServiceContent = {
     <h2>Usługa pocztowa</h2>
     <p>Oferujemy unikalną usługę – <strong>naprawę, programowanie zamków i dorabianie kluczy przez wysyłkę</strong>. Wystarczy wysłać do nas zamek samochodowy lub motocyklowy – naprawimy go, zaprogramujemy i odeślemy z powrotem.</p>
     <p>Obsługujemy klientów <strong>na całym świecie</strong> – Wielka Brytania, Litwa, Europa, USA, Australia i inne.</p>
-    <p><strong>Wyślij – naprawimy – odeślemy!</strong></p>
-    <a href="docs/mail-in-form.pdf" target="_blank" class="btn">📄 Download Order Form (PDF)</a>
+    <p><strong>Wyślij – naprawimy – odeślemy!</strong></p><a href="docs/mail-in-form.pdf" target="_blank" class="btn">📄 Download Order Form (PDF)</a>
   `
 };
+
 
 // Į keliame pašto paslaugos tekstą pagal kalbą
 function updatePostalService(lang) {
@@ -281,6 +281,87 @@ document.addEventListener("DOMContentLoaded", () => {
     }, {
       threshold: 0.1
     });
+  
+    document.querySelector("form").addEventListener("submit", function (e) {
+      const name = document.querySelector('input[name="name"]');
+      const email = document.querySelector('input[name="email"]');
+      const message = document.querySelector('textarea[name="message"]');
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  
+      if (!name.value || !email.value || !message.value) {
+        alert("Please fill in all fields.");
+        e.preventDefault();
+        return;
+      }
+  
+      if (!emailRegex.test(email.value)) {
+        alert("Please enter a valid email address.");
+        e.preventDefault();
+        return;
+      }
+    });
+    // Kalbų vertimai
+const translations = {
+  en: {
+    required: "Please fill in this field.",
+    invalidEmail: "Please enter a valid email address.",
+  },
+  lt: {
+    required: "Prašome užpildyti šį laukelį.",
+    invalidEmail: "Įveskite teisingą el. pašto adresą.",
+  },
+  pl: {
+    required: "Proszę wypełnić to pole.",
+    invalidEmail: "Wprowadź poprawny adres e-mail.",
+  },
+  ru: {
+    required: "Пожалуйста, заполните это поле.",
+    invalidEmail: "Введите действительный адрес электронной почты.",
+  },
+};
+
+document.querySelector("form").addEventListener("submit", function (e) {
+  const lang = window.savedLang || "en";
+  const t = translations[lang];
+
+  const name = document.querySelector('input[name="name"]');
+  const email = document.querySelector('input[name="email"]');
+  const message = document.querySelector('textarea[name="message"]');
+
+  const nameError = document.querySelector('[data-error-for="name"]');
+  const emailError = document.querySelector('[data-error-for="email"]');
+  const messageError = document.querySelector('[data-error-for="message"]');
+
+  // Išvalom senas klaidas
+  nameError.textContent = "";
+  emailError.textContent = "";
+  messageError.textContent = "";
+
+  let hasError = false;
+
+  if (!name.value.trim()) {
+    nameError.textContent = t.required;
+    hasError = true;
+  }
+
+  if (!email.value.trim()) {
+    emailError.textContent = t.required;
+    hasError = true;
+  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+    emailError.textContent = t.invalidEmail;
+    hasError = true;
+  }
+
+  if (!message.value.trim()) {
+    messageError.textContent = t.required;
+    hasError = true;
+  }
+
+  if (hasError) {
+    e.preventDefault();
+  }
+});
+
   
     sections.forEach((section) => observer.observe(section));
   });

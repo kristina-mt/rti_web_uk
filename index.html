@@ -192,6 +192,8 @@
     
 
     <section class="services">
+      <section id="services"></section>
+
       <h2 data-i18n="services-title"></h2>
       <ul>
         <li data-i18n="service1"></li>
@@ -248,32 +250,30 @@
           <p><strong>Region:</strong> UK-wide coverage</p>
         </div>
     
-        <!-- ✅ TIK viena forma -->
-        <form name="contact" netlify>
-          <input type="hidden" name="form-name" value="contact">
-          
-          <!-- Formos laukai -->
-          <input
-            type="text"
-            name="name"
-            placeholder="Your name"
-            required
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            data-i18n-placeholder="email"
-            required
-          />
-          <textarea
-            name="message"
-            placeholder="Message"
-            data-i18n-placeholder="message"
-            required
-          ></textarea>
+        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks.html">
+          <input type="hidden" name="form-name" value="contact" />
+          <p class="hidden">
+            <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
+          </p>
+        
+          <div class="form-group">
+            <input type="text" name="name" placeholder="Your name" required />
+            <span class="error-message" data-error-for="name"></span>
+          </div>
+        
+          <div class="form-group">
+            <input type="email" name="email" placeholder="Email" required />
+            <span class="error-message" data-error-for="email"></span>
+          </div>
+        
+          <div class="form-group">
+            <textarea name="message" placeholder="Message" required></textarea>
+            <span class="error-message" data-error-for="message"></span>
+          </div>
+        
           <button type="submit" data-i18n="send-button">Send</button>
         </form>
+        
       </div>
     </section>
 

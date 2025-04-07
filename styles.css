@@ -357,6 +357,19 @@ footer .social-links a {
   display: block;
   box-shadow: 0 4px 16px rgba(0,0,0,0.1);
 }
+.error-message {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 4px;
+  display: block;
+}
+.form-group {
+  margin-bottom: 1.5rem;
+}
+.hidden {
+  display: none;
+}
+
 
 
 
