@@ -306,6 +306,11 @@ footer .social-links a {
   font-size: 18px;
   transition: transform 0.2s, background-color 0.3s;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  margin-bottom: 40px; /* Tarpas nuo apačios iki juodos sekcijos */
+  padding: 10px; /* Pridėtas padding, kad būtų didesnis paspaudimo plotas */
+  border: 4px solid #f5c518; /* Auksinė riba aplink ikoną */
+  background-color: #1a1a1a; /* Juodas fonas aplink ikoną */  
+  gap: 16px;
 }
 
 .social-top a:hover {
@@ -331,6 +336,12 @@ footer .social-links a {
 .social-top a.x:hover {
   background-color: #9b7676;
 }
+.social-top a:hover {
+  background-color: #FFD700;
+  color: black;
+  transform: scale(1.1);
+}
+
 /* === SOCIAL ICONS BOTTOM === */
 .social-bottom {
   display: flex;
@@ -370,6 +381,13 @@ footer .social-links a {
   display: none;
 }
 
+.google {
+  color: white;
+  transition: color 0.3s;
+}
+.google:hover {
+  color: #4285F4; /* Google mėlyna */
+}
 
 
 
