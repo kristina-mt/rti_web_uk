@@ -98,7 +98,7 @@ const translations = {
       "service3": "Ключи для фургонов и грузовиков",
       "service4": "Аварийное открытие дверей",
       "service5": "Программирование ECU и ремап",
-      "service5": "Решения для иммобилайзеров",
+      "service6": "Решения для иммобилайзеров",
     "gallery-title": "Галерея",
     "training-title": "Обучение",
     "training-text": "RTi Auto Locksmith предлагает профессиональное обучение по программированию ключей, дублированию, ECU ремапу и аварийному вскрытию.<br><br>Обучение проводится на <strong>литовском</strong>, <strong>английском</strong>, <strong>русском</strong> и <strong>польском</strong> языках – в <strong>Литве</strong> и <strong>Великобритании</strong>.",
@@ -144,9 +144,9 @@ const translations = {
       "service3": "Klucze do furgonetek i ciężarówek",
       "service4": "Awaryjne otwieranie",
       "service5": "Programowanie ECU i remap",
-      "service5": "Rozwiązania imobilizera",
+      "service6": "Rozwiązania imobilizera",
     "gallery-title": "Galeria",
-      "contact-title": "Kontakt",
+    "contact-title": "Kontakt",
       "uk-contact": "📍 Wielka Brytania",
       "training-title": "Szkolenia",
     "training-text": "RTi Auto Locksmith oferuje profesjonalne szkolenia z zakresu programowania kluczy, kopiowania, remapu ECU i awaryjnego otwierania.<br><br>Szkolenia odbywają się w językach: <strong>litewskim</strong>, <strong>angielskim</strong>, <strong>rosyjskim</strong> i <strong>polskim</strong> – zarówno na <strong>Litwie</strong>, jak i w <strong>Wielkiej Brytanii</strong>.",
@@ -175,7 +175,7 @@ const translations = {
       "name": "Twoje imię",
       "email": "Twój email",
       "message": "Twoja wiadomość",
-      "send-button": "Wyślij",
+      "send-button": "Wyślij"
     }
   };
  // === Pašto paslaugos vertimai ===
@@ -213,8 +213,6 @@ const postalServiceContent = {
   `
 };
 
-
-// Į keliame pašto paslaugos tekstą pagal kalbą
 function updatePostalService(lang) {
   const section = document.getElementById("postalService");
   if (section && postalServiceContent[lang]) {
@@ -222,53 +220,36 @@ function updatePostalService(lang) {
   }
 }
 
-// Pridėti šią eilutę funkcijos translatePage pabaigoje:
-// updatePostalService(lang);
-
-
 function switchLang(lang) {
-document.querySelectorAll('.lang-switcher button').forEach(btn => btn.classList.remove('active'));
-document.querySelector(`.lang-switcher button[onclick="switchLang('${lang}')"]`)?.classList.add('active');
-localStorage.setItem("siteLang", lang);
-translatePage(lang);
+  document.querySelectorAll('.lang-switcher button').forEach(btn => btn.classList.remove('active'));
+  document.querySelector(`.lang-switcher button[onclick="switchLang('${lang}')"]`)?.classList.add('active');
+  localStorage.setItem("siteLang", lang);
+  translatePage(lang);
 }
 
 function translatePage(lang) {
-const elements = document.querySelectorAll("[data-i18n]");
-elements.forEach(el => {
-  const key = el.getAttribute("data-i18n");
-  if (translations[lang] && translations[lang][key]) {
-    el.innerHTML = translations[lang][key];
-    updatePostalService(lang);
-
-  }
-});
-const placeholders = document.querySelectorAll("[data-i18n-placeholder]");
-placeholders.forEach(el => {
-  const key = el.getAttribute("data-i18n-placeholder");
-  if (translations[lang] && translations[lang][key]) {
-    el.placeholder = translations[lang][key];
-  }
-});
-}
-
-let savedLang = localStorage.getItem("siteLang") || navigator.language.slice(0, 2);
-savedLang = ["en", "lt", "ru", "pl"].includes(savedLang) ? savedLang : "en";
-
-window.addEventListener("DOMContentLoaded", () => {
-translatePage(savedLang);
-const langSwitcher = document.querySelector(".lang-switcher");
-if (langSwitcher) {
-  document.querySelector(`.lang-switcher button[onclick="switchLang('${savedLang}')"]`)?.classList.add('active');
-}
-const backToTop = document.getElementById("backToTop");
-if (backToTop) {
-  window.addEventListener("scroll", () => {
-    backToTop.style.display = window.scrollY > 200 ? "block" : "none";
+  const elements = document.querySelectorAll("[data-i18n]");
+  elements.forEach(el => {
+    const key = el.getAttribute("data-i18n");
+    if (translations[lang] && translations[lang][key]) {
+      el.textContent = translations[lang][key];
+    }
   });
-  backToTop.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  const t = translations[lang];
+  const nameInput = document.querySelector('input[name="name"]');
+  const emailInput = document.querySelector('input[name="email"]');
+  const messageInput = document.querySelector('textarea[name="message"]');
+  const sendButton = document.querySelector('[data-i18n="send-button"]');
+
+  if (nameInput) nameInput.placeholder = t.name;
+  if (emailInput) emailInput.placeholder = t.email;
+  if (messageInput) messageInput.placeholder = t.message;
+  if (sendButton) sendButton.textContent = t.send;
+
+  updatePostalService(lang);
 }
-});
+
 window.addEventListener("DOMContentLoaded", () => {
   const lang = localStorage.getItem("siteLang") || navigator.language.slice(0, 2);
   const finalLang = ["en", "lt", "ru", "pl"].includes(lang) ? lang : "en";
@@ -277,7 +258,6 @@ window.addEventListener("DOMContentLoaded", () => {
   translatePage(finalLang);
   document.querySelector(`.lang-switcher button[onclick="switchLang('${finalLang}')"]`)?.classList.add("active");
 
-  // Rodyti „back to top“
   const backToTop = document.getElementById("backToTop");
   if (backToTop) {
     window.addEventListener("scroll", () => {
@@ -286,12 +266,10 @@ window.addEventListener("DOMContentLoaded", () => {
     backToTop.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  // Pridėti datą ir laiką
   const now = new Date().toLocaleString("en-GB");
   const hiddenDate = document.getElementById("submitted-at");
   if (hiddenDate) hiddenDate.value = now;
 
-  // Formos validacija su kalba
   const t = translations[finalLang];
   const form = document.querySelector("form");
   if (form) {
@@ -328,13 +306,6 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Placeholder'iai
-  document.querySelector('input[name="name"]').placeholder = t.name;
-  document.querySelector('input[name="email"]').placeholder = t.email;
-  document.querySelector('textarea[name="message"]').placeholder = t.message;
-  document.querySelector('[data-i18n="send-button"]').textContent = t["send-button"];
-
-  // Animacijos (section visibility)
   const sections = document.querySelectorAll("section");
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
