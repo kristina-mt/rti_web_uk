@@ -2,72 +2,110 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Thank you!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thank You</title>
+  <link rel="stylesheet" href="styles.css" />
   <style>
     body {
-      font-family: sans-serif;
-      background: #0f1114;
+      background-color: #111;
       color: white;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
+      justify-content: center;
       height: 100vh;
     }
-    .box {
+    .thank-box {
       background: #222;
-      padding: 2rem;
-      border-radius: 8px;
+      border-radius: 16px;
+      padding: 30px 40px;
       text-align: center;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
     }
-    .lang-buttons button {
-      margin: 0.5rem;
+    .thank-box h1 {
+      color: #FFD700;
+      margin-bottom: 10px;
+    }
+    .thank-box p {
+      margin: 10px 0 20px;
+    }
+    .thank-box a {
+      color: #FFD700;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .lang-switcher {
+      margin-top: 20px;
+    }
+    .lang-switcher button {
+      background-color: #FFD700;
+      color: black;
+      border: none;
+      padding: 6px 12px;
+      margin: 4px;
+      border-radius: 6px;
+      font-weight: bold;
       cursor: pointer;
     }
   </style>
 </head>
 <body>
-  <div class="box">
-    <h1 id="thanks-title">Thank you!</h1>
-    <p id="thanks-msg">Your message has been submitted.</p>
-    <a href="/" style="color: #ffd700;">← Back to website</a>
-    <div class="lang-buttons">
-      <button onclick="setLang('en')">EN</button>
-      <button onclick="setLang('lt')">LT</button>
-      <button onclick="setLang('pl')">PL</button>
-      <button onclick="setLang('ru')">RU</button>
+  <div class="thank-box">
+    <h1 data-i18n="thank-you">Thank you!</h1>
+    <p data-i18n="message-received">Your message has been submitted.</p>
+    <a href="index.html" data-i18n="back-link">← Back to website</a>
+    
+    <div class="lang-switcher">
+      <button onclick="switchLang('en')">EN</button>
+      <button onclick="switchLang('lt')">LT</button>
+      <button onclick="switchLang('pl')">PL</button>
+      <button onclick="switchLang('ru')">RU</button>
     </div>
   </div>
 
   <script>
     const translations = {
       en: {
-        title: "Thank you!",
-        msg: "Your message has been submitted.",
+        "thank-you": "Thank you!",
+        "message-received": "Your message has been submitted.",
+        "back-link": "← Back to website"
       },
       lt: {
-        title: "Ačiū!",
-        msg: "Jūsų žinutė išsiųsta.",
+        "thank-you": "Ačiū!",
+        "message-received": "Jūsų žinutė sėkmingai išsiųsta.",
+        "back-link": "← Grįžti į svetainę"
       },
       pl: {
-        title: "Dziękujemy!",
-        msg: "Twoja wiadomość została wysłana.",
+        "thank-you": "Dziękujemy!",
+        "message-received": "Twoja wiadomość została wysłana.",
+        "back-link": "← Powrót do strony"
       },
       ru: {
-        title: "Спасибо!",
-        msg: "Ваше сообщение было отправлено.",
-      },
+        "thank-you": "Спасибо!",
+        "message-received": "Ваше сообщение было отправлено.",
+        "back-link": "← Назад на сайт"
+      }
     };
 
-    function setLang(lang) {
-      localStorage.setItem("lang", lang);
-      const t = translations[lang];
-      document.getElementById("thanks-title").textContent = t.title;
-      document.getElementById("thanks-msg").textContent = t.msg;
+    function switchLang(lang) {
+      localStorage.setItem("siteLang", lang);
+      translate(lang);
     }
 
-    // Detect saved language
-    const saved = localStorage.getItem("lang") || "en";
-    setLang(saved);
+    function translate(lang) {
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        if (translations[lang] && translations[lang][key]) {
+          el.textContent = translations[lang][key];
+        }
+      });
+    }
+
+    const savedLang = localStorage.getItem("siteLang") || "en";
+    translate(savedLang);
   </script>
 </body>
 </html>
