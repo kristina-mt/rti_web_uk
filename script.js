@@ -23,6 +23,7 @@ function translatePage(lang) {
     if (t[key]) el.innerHTML = t[key];
   });
 
+
   // Placeholderiai
   const nameInput = document.querySelector('input[name="name"]');
   const emailInput = document.querySelector('input[name="email"]');
@@ -105,6 +106,8 @@ window.addEventListener("DOMContentLoaded", () => {
       }
     });
   }, { threshold: 0.1 });
+
+  
 
   sections.forEach(section => observer.observe(section));
 });

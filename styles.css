@@ -382,15 +382,14 @@ footer .social-links a {
 }
 
 .google {
-  color: white;
-  transition: color 0.3s;
+  color:  #200ec5;
+  transition: transform 0.2s ease, opacity 0.2s ease;
 }
 .google:hover {
-  color: #4285F4; /* Google mėlyna */
+  color:  #0e9154; /* Google mėlyna */
 }
 
-
-
+.postalService
 #backToTop:hover {
   background-color: #e0af00;
 }
