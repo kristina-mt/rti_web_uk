@@ -188,7 +188,6 @@ footer .social-links a {
   text-decoration: none;
 }
 
-/* === BACK TO TOP === */
 #backToTop {
   position: fixed;
   bottom: 20px;
@@ -196,14 +195,21 @@ footer .social-links a {
   background-color: #ffc400;
   color: black;
   border: none;
-  padding: 10px 15px;
+  padding: 12px 16px;
   border-radius: 50%;
-  font-size: 18px;
+  font-size: 20px;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-  display: none;
-  z-index: 999;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  display: none; /* Svarbu: turi būti pradžioje paslėptas */
+  z-index: 9999;
+  transition: background-color 0.3s ease;
 }
+#backToTop:hover {
+  background-color: #e0af00;
+}
+
+
+
 .social-top {
   display: flex;
   justify-content: center;

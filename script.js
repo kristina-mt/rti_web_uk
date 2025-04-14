@@ -1,10 +1,13 @@
+console.log("Script loaded!");
+
 // Pašto paslaugos vertimas
 function updatePostalService(lang) {
   const section = document.getElementById("postalService");
-  if (section && postalServiceContent[lang]) {
-    section.innerHTML = postalServiceContent[lang];
+  if (section && translations[lang]?.postalService) {
+    section.innerHTML = translations[lang].postalService;
   }
 }
+
 
 // Kalbos perjungimas
 function switchLang(lang) {
@@ -22,7 +25,6 @@ function translatePage(lang) {
     const key = el.getAttribute("data-i18n");
     if (t[key]) el.innerHTML = t[key];
   });
-
 
   // Placeholderiai
   const nameInput = document.querySelector('input[name="name"]');
@@ -43,6 +45,7 @@ let savedLang = localStorage.getItem("siteLang") || navigator.language.slice(0, 
 savedLang = ["en", "lt", "ru", "pl"].includes(savedLang) ? savedLang : "en";
 
 window.addEventListener("DOMContentLoaded", () => {
+  console.log("Script loaded!");
   translatePage(savedLang);
   document.querySelector(`.lang-switcher button[onclick="switchLang('${savedLang}')"]`)?.classList.add("active");
 
@@ -51,34 +54,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const form = document.querySelector("form");
   if (form) {
     form.addEventListener("submit", e => {
-      const name = form.querySelector('input[name="name"]');
-      const email = form.querySelector('input[name="email"]');
-      const message = form.querySelector('textarea[name="message"]');
-      const nameError = form.querySelector('[data-error-for="name"]');
-      const emailError = form.querySelector('[data-error-for="email"]');
-      const messageError = form.querySelector('[data-error-for="message"]');
-      let hasError = false;
-
-      nameError.textContent = "";
-      emailError.textContent = "";
-      messageError.textContent = "";
-
-      if (!name.value.trim()) {
-        nameError.textContent = t.required;
-        hasError = true;
-      }
-      if (!email.value.trim()) {
-        emailError.textContent = t.required;
-        hasError = true;
-      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
-        emailError.textContent = t.invalidEmail;
-        hasError = true;
-      }
-      if (!message.value.trim()) {
-        messageError.textContent = t.required;
-        hasError = true;
-      }
-      if (hasError) e.preventDefault();
+      // ...
     });
   }
 
@@ -87,13 +63,20 @@ window.addEventListener("DOMContentLoaded", () => {
   const hiddenDate = document.getElementById("submitted-at");
   if (hiddenDate) hiddenDate.value = now;
 
-  // Back to top mygtukas
+  // Back to Top mygtukas
   const backToTop = document.getElementById("backToTop");
+  
   if (backToTop) {
     window.addEventListener("scroll", () => {
       backToTop.style.display = window.scrollY > 200 ? "block" : "none";
     });
-    backToTop.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    backToTop.onclick = () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    };
   }
 
   // Sekcijų animacija
@@ -107,7 +90,6 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   }, { threshold: 0.1 });
 
-  
-
   sections.forEach(section => observer.observe(section));
 });
+
