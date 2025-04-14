@@ -40,7 +40,6 @@ function translatePage(lang) {
   updatePostalService(lang);
 }
 
-// Pagrindinis įkrovimas
 let savedLang = localStorage.getItem("siteLang") || navigator.language.slice(0, 2);
 savedLang = ["en", "lt", "ru", "pl"].includes(savedLang) ? savedLang : "en";
 
@@ -49,14 +48,51 @@ window.addEventListener("DOMContentLoaded", () => {
   translatePage(savedLang);
   document.querySelector(`.lang-switcher button[onclick="switchLang('${savedLang}')"]`)?.classList.add("active");
 
-  // Formos validacija
-  const t = translations[savedLang];
+  const t = translations[savedLang]; // gaunam vertimus pagal kalbą
   const form = document.querySelector("form");
+
   if (form) {
     form.addEventListener("submit", e => {
-      // ...
+      const name = form.querySelector('input[name="name"]');
+      const email = form.querySelector('input[name="email"]');
+      const message = form.querySelector('textarea[name="message"]');
+
+      const nameError = form.querySelector('[data-error-for="name"]');
+      const emailError = form.querySelector('[data-error-for="email"]');
+      const messageError = form.querySelector('[data-error-for="message"]');
+
+      // Išvalom senas klaidas
+      nameError.textContent = "";
+      emailError.textContent = "";
+      messageError.textContent = "";
+
+      let hasError = false;
+
+      if (!name.value.trim()) {
+        nameError.textContent = t.required;
+        hasError = true;
+      }
+
+      if (!email.value.trim()) {
+        emailError.textContent = t.required;
+        hasError = true;
+      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+        emailError.textContent = t.invalidEmail;
+        hasError = true;
+      }
+
+      if (!message.value.trim()) {
+        messageError.textContent = t.required;
+        hasError = true;
+      }
+
+      if (hasError) {
+        e.preventDefault(); // stabdom siuntimą jei yra klaidų
+      }
     });
   }
+
+  
 
   // Pridėti datą
   const now = new Date().toLocaleString("en-GB");
