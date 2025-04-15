@@ -2,7 +2,7 @@ const translations = {
   en: {
     "hero-title": "Fast and reliable auto locksmith service",
     "hero-sub":
-      "Car keys, motorcycles, vans, lorries – programming, duplication, ECU remap, emergency unlocking",
+      "Car keys, motorcycles, vans, lorries – programming, duplication, ECU remapping, emergency unlocking",
     "banner-text": "🔐 24/7 UK-wide emergency service",
     "contact-button": "Contact Us",
     "about-title": "About Us",
@@ -23,7 +23,7 @@ When you need reliable help with vehicle keys – <strong>we’re the team you c
     service2: "Motorcycle key solutions",
     service3: "Van and lorry key cutting",
     service4: "Emergency unlocking",
-    service5: "ECU programming & remap",
+    service5: "ECU programming & remapping",
     service6: "Immobilizer solutions",
     postalService: `
     <img src="images/mail-global.png" alt="Mail-in lock service" style="max-width: 50px; border-radius: 8px; margin-bottom: 20px;">
@@ -144,6 +144,18 @@ Below is a general guide to our service rates:</p>
     invalidEmail: "Please enter a valid email address.",
     thanksTitle: "Thank you!",
     thanksMsg: "Your message has been submitted.",
+    "nav-about": "About Us",
+"nav-services": "Our Services",
+"nav-lockout": "Car Lockout Service",
+"nav-key-replacement": "Car Key Replacement",
+"nav-why-us": "Why Choose Us?",
+"nav-ignition": "Ignition Lock Repair",
+"nav-programming": "Car Key Programming",
+"nav-pricing": "Pricing & Services",
+"nav-postal": "Mail-in Service",
+"nav-training": "Training",
+"nav-contact": "Contact",
+
   },
   lt: {
     "hero-title": "Greita ir patikima automobilių raktų pagalba",
@@ -241,17 +253,17 @@ RTi Auto Locksmith siūlo <strong>aukščiausio lygio paslaugas</strong> už <st
 <p>Pasirinkdami mus, gaunate <strong>ramybę</strong>, <strong>greitą pagalbą</strong> ir <strong>tikrus rezultatus</strong>.</p>
 `,
 
-   "ignition-title": "Uždegimo spynos remontas",
+   "ignition-title": "Užvedimo spynos remontas",
 "ignition-text": `
-<p>Uždegimo sistema – viena jautriausių ir svarbiausių automobilio dalių.<br><br>
+<p>Užvedimo spynos – viena jautriausių ir svarbiausių automobilio dalių.<br><br>
 RTi Auto Locksmith profesionaliai atlieka šias paslaugas:</p>
 <ul>
-  <li>Uždegimo spynelių remontas ir nusidėvėjimo šalinimas</li>
+  <li>Užvedimo spynelių remontas ir nusidėvėjimo šalinimas</li>
   <li>Pažeistų ar neveikiančių spynų keitimas</li>
   <li>Nulūžusių raktų ištraukimas iš spynos</li>
 </ul>
 <p><strong>Nebandykite remontuoti savarankiškai</strong> – neteisingas veiksmas gali sugadinti visą sistemą.<br><br>
-Mūsų patyrę meistrai pasirūpins, kad jūsų uždegimo sistema veiktų saugiai ir patikimai.</p>
+Mūsų patyrę meistrai pasirūpins, kad jūsų Užvedimo sistema veiktų saugiai ir patikimai.</p>
 `,
 
    "programming-title": "Automobilio rakto programavimas",
@@ -289,6 +301,23 @@ Mūsų programavimo paslaugos apima:</p>
     email: "El. paštas",
     message: "Jūsų žinutė",
     "send-button": "Siųsti",
+    required: "Prašome užpildyti šį laukelį.",  
+    invalidEmail: "Prašome įvesti galiojantį el. pašto adresą.",
+    thanksTitle: "Ačiū!",
+    thanksMsg: "Jūsų žinutė buvo išsiųsta.",
+    "nav-about": "Apie mus",
+"nav-services": "Mūsų paslaugos",
+"nav-lockout": "Avarinis atrakinimas",
+"nav-key-replacement": "Rakto keitimas",
+"nav-why-us": "Kodėl mes?",
+"nav-ignition": "Užvedimo remontas",
+"nav-programming": "Rakto programavimas",
+"nav-pricing": "Kainos ir paslaugos",
+"nav-postal": "Paslauga paštu",
+"nav-training": "Mokymai",
+"nav-contact": "Kontaktai",
+
+    
   },
   ru: {
     "hero-title": "Быстрая и надежная помощь с ключами",
@@ -435,6 +464,22 @@ RTi Auto Locksmith предлагает профессиональный сер�
     email: "Эл. почта",
     message: "Ваше сообщение",
     "send-button": "Отправить",
+    required: "Пожалуйста, заполните это поле.",
+    invalidEmail: "Пожалуйста, введите действующий адрес электронной почты.",
+    thanksTitle: "Спасибо!",
+    thanksMsg: "Ваше сообщение отправлено.",
+    "nav-about": "О нас",
+"nav-services": "Наши услуги",
+"nav-lockout": "Аварийное вскрытие",
+"nav-key-replacement": "Замена ключа",
+"nav-why-us": "Почему мы?",
+"nav-ignition": "Ремонт зажигания",
+"nav-programming": "Программирование ключей",
+"nav-pricing": "Цены и услуги",
+"nav-postal": "Почтовая услуга",
+"nav-training": "Обучение",
+"nav-contact": "Контакты",
+
   },
   pl: {
     "hero-title": "Szybka i niezawodna pomoc z kluczami",
@@ -581,5 +626,21 @@ Przykładowe stawki naszych usług:</p>
     email: "Twój email",
     message: "Twoja wiadomość",
     "send-button": "Wyślij",
+    required: "Proszę wypełnić to pole.",
+    invalidEmail: "Proszę podać poprawny adres e-mail.",  
+    thanksTitle: "Dziękujemy!",
+    thanksMsg: "Twoja wiadomość została wysłana.",
+    "nav-about": "O nas",
+"nav-services": "Nasze usługi",
+"nav-lockout": "Awaryjne otwieranie",
+"nav-key-replacement": "Wymiana klucza",
+"nav-why-us": "Dlaczego my?",
+"nav-ignition": "Naprawa stacyjki",
+"nav-programming": "Programowanie kluczy",
+"nav-pricing": "Cennik usług",
+"nav-postal": "Usługa pocztowa",
+"nav-training": "Szkolenia",
+"nav-contact": "Kontakt",
+
   },
 };

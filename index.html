@@ -30,12 +30,12 @@
       as="font"
       href="images/logo.webp"
       type="image/webp"
-      crossorigin="anonymous"
-    />
+      />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
+    
 
     <!-- hreflang -->
     <link
@@ -130,8 +130,25 @@
     <script src="script.js" defer></script>
 
   </head>
-
+<main>
   <body>
+    <nav class="navbar">
+      <ul class="nav-links"> 
+        <li><a href="#postalService" data-i18n="nav-postalService" title="Postal Service">Mail-in lock</a></li>
+        <li><a href="#about" data-i18n="nav-about" title="About Us">About Us</a></li>
+        <li><a href="#services" data-i18n="nav-services" title="Services">Services</a></li>
+        <li><a href="#lockout" data-i18n="nav-lockout" title="Emergency Lockout">Emergency Lockout</a></li>
+        <li><a href="#key-replacement" data-i18n="nav-key-replacement" title="Key Replacement">Key Replacement</a></li>
+        <li><a href="#why-us" data-i18n="nav-why-us" title="Why Us">Why Us</a></li>
+        <li><a href="#ignition" data-i18n="nav-ignition" title="Ignition Repair">Ignition Repair</a></li>
+        <li><a href="#programming" data-i18n="nav-programming" title="Programming">Programming</a></li>
+        <li><a href="#pricing" data-i18n="nav-pricing" title="Pricing">Pricing</a></li>
+        <li><a href="#training" data-i18n="nav-training" title="Training">Training</a></li>
+        <li><a href="#contact" data-i18n="nav-contact" title="Contact Us">Contact Us</a></li>
+      </ul>
+    </nav>
+    
+    
     <div class="social-top">
       <a
         href="https://www.facebook.com/@rtiauto"
@@ -220,74 +237,109 @@
         </a>
       </div>
     </header>
-    <section
+    <section id="services" class="section-fade-left">
+
+
+<!-- Mūsų paslaugos -->
+<section class="services" id="services">
+  <h2 data-i18n="services-title"></h2>
+  <ul>
+    <li data-i18n="service1"></li>
+    <li data-i18n="service2"></li>
+    <li data-i18n="service3"></li>
+    <li data-i18n="service4"></li>
+    <li data-i18n="service5"></li>
+    <li data-i18n="service6"></li>
+  </ul>
+</section> 
+<!-- Apie mus -->
+<section class="about" id="about">
+  <h2 data-i18n="about-title"></h2>
+  <p data-i18n="about-text"></p>
+</section>
+ <section
       id="postalService"
       data-i18n="postalService"
       class="postal-block"
     ></section>
+<!-- Avarinis atrakinimas -->
+<section class="lockout" id="lockout">
+  <h2 data-i18n="lockout-title"></h2>
+  <div class="section-grid">
+    <div class="grid-content">
+      <img src="images/lockout-service.png" alt="Car lockout" />
+      <div data-i18n="lockout-text"></div>
+    </div>
+  </div>
+</section>
 
-    <section class="about" id="about">
-      <h2 data-i18n="about-title"></h2>
-      <p data-i18n="about-text"></p>
-    </section>
 
-    <section class="services">
-      <h2 data-i18n="services-title"></h2>
-      <ul>
-        <li data-i18n="service1"></li>
-        <li data-i18n="service2"></li>
-        <li data-i18n="service3"></li>
-        <li data-i18n="service4"></li>
-        <li data-i18n="service5"></li>
-        <li data-i18n="service6"></li>
-      </ul>
-    </section>
 
-    <section class="lockout">
-      <h2 data-i18n="lockout-title"></h2>
-      <p data-i18n="lockout-text"></p>
-    </section>
 
-    <section class="key-replacement">
-      <h2 data-i18n="key-replacement-title"></h2>
-      <p data-i18n="key-replacement-text"></p>
-    </section>
+<!-- Rakto keitimas -->
+<section class="key-replacement" id="key-replacement">
+  <h2 data-i18n="key-replacement-title"></h2>
+  <div class="section-grid">
+    <div class="grid-content">
+      <img src="images/key-replacement.png" alt="Car key replacement" class="section-image" />
+    <div data-i18n="key-replacement-text"></div>
+  </div>
+</section>
 
-    <section class="why-us">
-      <h2 data-i18n="why-us-title"></h2>
-      <p data-i18n="why-us-text"></p>
-    </section>
 
-    <section class="ignition">
-      <h2 data-i18n="ignition-title"></h2>
-      <p data-i18n="ignition-text"></p>
-    </section>
 
-    <section class="programming">
-      <h2 data-i18n="programming-title"></h2>
-      <p data-i18n="programming-text"></p>
-    </section>
+<!-- Kodėl mes -->
+<section class="why-us" id="why-us">
+  <h2 data-i18n="why-us-title"></h2>
+  <p data-i18n="why-us-text"></p>
+</section>
 
-    <section class="pricing">
-      <h2 data-i18n="pricing-title"></h2>
-      <p data-i18n="pricing-text"></p>
-    </section>
+<!-- Uždegimo spynelės remontas -->
+<section class="ignition" id="ignition">
+  <h2 data-i18n="ignition-title"></h2>
+  <div class="section-grid">
+    <div class="grid-content">
+    <img src="images/ignition-repair.jpg" alt="Ignition lock repair" class="section-image" />
+    <div data-i18n="ignition-text"></div>
+  </div>
+</section>
 
-    <section class="training">
-      <h2 data-i18n="training-title"></h2>
-      <p data-i18n="training-text"></p>
-    </section>
 
-    <section class="contact" id="contact">
-      <h2 data-i18n="contact-title"></h2>
-      <div class="contact-grid">
-        <div class="contact-block">
-          <h3 data-i18n="uk-contact"></h3>
-          <p><strong>Tel.:</strong> +44 7850671304</p>
-          <p><strong>Email:</strong> rtiautolocksmith@gmail.com</p>
-          <p><strong>Region:</strong> UK-wide coverage</p>
-        </div>
 
+<!-- Rakto programavimas -->
+<section class="programming" id="programming">
+  <h2 data-i18n="programming-title"></h2>
+  <div class="section-grid">
+    <div class="grid-content">
+    <img src="images/key-programming.jpg" alt="Car key programming" class="section-image" />
+    <div data-i18n="programming-text"></div>
+  </div>
+</section>
+
+
+
+<!-- Kainos -->
+<section class="pricing" id="pricing">
+  <h2 data-i18n="pricing-title"></h2>
+  <p data-i18n="pricing-text"></p>
+</section>
+
+
+<!-- Mokymai -->
+<section class="training" id="training">
+  <h2 data-i18n="training-title"></h2>
+  <p data-i18n="training-text"></p>
+</section>
+
+<section class="contact" id="contact">
+  <h2 data-i18n="contact-title"></h2>
+  <div class="contact-grid">
+    <div class="contact-block">
+      <h3 data-i18n="uk-contact"></h3>
+      <p><strong>Tel.:</strong> +44 7850671304</p>
+      <p><strong>Email:</strong> rtiautolocksmith@gmail.com</p>
+      <p><strong>Region:</strong> UK-wide coverage</p>
+    </div>
         <form
           name="contact"
           method="POST"
@@ -324,7 +376,7 @@
         </form>
       </div>
     </section>
-
+  </main>
     <footer>
       <p data-i18n="footer"></p>
       <div class="social-bottom">
@@ -386,6 +438,6 @@
   </footer>
   <!-- Back to Top Button -->
     <button id="backToTop" title="Back to top">↑</button>
-
+  
 </body>
 </html>

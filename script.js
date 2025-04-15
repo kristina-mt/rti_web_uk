@@ -8,7 +8,6 @@ function updatePostalService(lang) {
   }
 }
 
-
 // Kalbos perjungimas
 function switchLang(lang) {
   document.querySelectorAll('.lang-switcher button').forEach(btn => btn.classList.remove('active'));
@@ -17,7 +16,7 @@ function switchLang(lang) {
   translatePage(lang);
 }
 
-// Tekstų vertimas
+// Vertimas visiems tekstams
 function translatePage(lang) {
   const t = translations[lang];
 
@@ -26,7 +25,7 @@ function translatePage(lang) {
     if (t[key]) el.innerHTML = t[key];
   });
 
-  // Placeholderiai
+  // Formos placeholderiai
   const nameInput = document.querySelector('input[name="name"]');
   const emailInput = document.querySelector('input[name="email"]');
   const messageInput = document.querySelector('textarea[name="message"]');
@@ -40,15 +39,15 @@ function translatePage(lang) {
   updatePostalService(lang);
 }
 
-let savedLang = localStorage.getItem("siteLang") || navigator.language.slice(0, 2);
-savedLang = ["en", "lt", "ru", "pl"].includes(savedLang) ? savedLang : "en";
-
+// Pagrindinis skriptas po DOM užkrovimo
 window.addEventListener("DOMContentLoaded", () => {
-  console.log("Script loaded!");
-  translatePage(savedLang);
-  document.querySelector(`.lang-switcher button[onclick="switchLang('${savedLang}')"]`)?.classList.add("active");
+  const savedLang = localStorage.getItem("siteLang") || navigator.language.slice(0, 2);
+  const lang = ["en", "lt", "ru", "pl"].includes(savedLang) ? savedLang : "en";
 
-  const t = translations[savedLang]; // gaunam vertimus pagal kalbą
+  translatePage(lang);
+  document.querySelector(`.lang-switcher button[onclick="switchLang('${lang}')"]`)?.classList.add("active");
+
+  const t = translations[lang];
   const form = document.querySelector("form");
 
   if (form) {
@@ -61,47 +60,78 @@ window.addEventListener("DOMContentLoaded", () => {
       const emailError = form.querySelector('[data-error-for="email"]');
       const messageError = form.querySelector('[data-error-for="message"]');
 
-      // Išvalom senas klaidas
-      nameError.textContent = "";
-      emailError.textContent = "";
-      messageError.textContent = "";
+      if (nameError) nameError.textContent = "";
+      if (emailError) emailError.textContent = "";
+      if (messageError) messageError.textContent = "";
 
       let hasError = false;
 
       if (!name.value.trim()) {
-        nameError.textContent = t.required;
+        if (nameError) nameError.textContent = t.required;
         hasError = true;
       }
 
       if (!email.value.trim()) {
-        emailError.textContent = t.required;
+        if (emailError) emailError.textContent = t.required;
         hasError = true;
       } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
-        emailError.textContent = t.invalidEmail;
+        if (emailError) emailError.textContent = t.invalidEmail;
         hasError = true;
       }
 
       if (!message.value.trim()) {
-        messageError.textContent = t.required;
+        if (messageError) messageError.textContent = t.required;
         hasError = true;
       }
 
       if (hasError) {
-        e.preventDefault(); // stabdom siuntimą jei yra klaidų
+        e.preventDefault();
       }
     });
   }
 
-  
+  // Smooth scroll
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', function (e) {
+      const href = this.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    });
+  });
 
-  // Pridėti datą
+  // Active section highlighting
+  window.addEventListener('scroll', () => {
+    const sections = document.querySelectorAll('section, header');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    let current = '';
+
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 100;
+      if (pageYOffset >= sectionTop) {
+        current = section.getAttribute('id');
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === '#' + current) {
+        link.classList.add('active');
+      }
+    });
+  });
+
+  // Pridėti datą į paslėptą lauką
   const now = new Date().toLocaleString("en-GB");
   const hiddenDate = document.getElementById("submitted-at");
   if (hiddenDate) hiddenDate.value = now;
 
   // Back to Top mygtukas
   const backToTop = document.getElementById("backToTop");
-  
   if (backToTop) {
     window.addEventListener("scroll", () => {
       backToTop.style.display = window.scrollY > 200 ? "block" : "none";
@@ -115,7 +145,7 @@ window.addEventListener("DOMContentLoaded", () => {
     };
   }
 
-  // Sekcijų animacija
+  // Sekcijų animacija su IntersectionObserver
   const sections = document.querySelectorAll("section");
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
@@ -128,4 +158,3 @@ window.addEventListener("DOMContentLoaded", () => {
 
   sections.forEach(section => observer.observe(section));
 });
-
