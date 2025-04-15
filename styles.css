@@ -197,6 +197,19 @@ section + section {
   justify-content: space-between;
   align-items: center;
 }
+.nav-links a {
+  color: #333; /* pagrindinė spalva */
+  text-decoration: none; /* pašalina mėlyną ir pabraukimą */
+  font-size: 0.9rem;
+  font-weight: 600; /* šriftas bold */
+  padding: 10px 15px; /* pridėtas padding, kad būtų didesnis paspaudimo plotas */
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: #007b39;
+  border-bottom: 2px solid #007b39;
+}
 
 /* Hamburger mygtukas paslėptas desktop */
 .hamburger {
