@@ -244,7 +244,7 @@ section + section {
   
   .lang-switcher {
     position: absolute;
-    top: 120px;
+    top: 80px;
     right: 10px;
   }
 }
