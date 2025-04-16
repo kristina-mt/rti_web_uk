@@ -104,26 +104,27 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Active section highlighting
-  window.addEventListener('scroll', () => {
-    const sections = document.querySelectorAll('section, header');
-    const navLinks = document.querySelectorAll('.nav-links a');
-    let current = '';
+  // Tikslus active section nustatymas
+window.addEventListener('scroll', () => {
+  const sections = document.querySelectorAll('section');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  let currentSection = "";
 
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop - 100;
-      if (pageYOffset >= sectionTop) {
-        current = section.getAttribute('id');
-      }
-    });
-
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === '#' + current) {
-        link.classList.add('active');
-      }
-    });
+  sections.forEach(section => {
+    const rect = section.getBoundingClientRect();
+    if (rect.top <= 150 && rect.bottom >= 150) {
+      currentSection = section.id;
+    }
   });
+
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === '#' + currentSection) {
+      link.classList.add('active');
+    }
+  });
+});
+
 
   // Pridėti datą į paslėptą lauką
   const now = new Date().toLocaleString("en-GB");
