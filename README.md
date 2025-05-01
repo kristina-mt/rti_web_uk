@@ -50,7 +50,32 @@ This website showcases RTi Auto Locksmith's automotive locksmith services across
 ├── images/
 │   └── logo.webp, flag-gb.svg, ...
 ```
+QA Testing
 
+This website was tested using both manual methods and Cypress automated tests to ensure high functionality, usability, and responsiveness across multiple devices and languages.
+
+Manual Testing Included:
+	•	Netlify form field validation (required fields, email format)
+	•	Language switching with real-time content and placeholder updates
+	•	Responsive design checks on mobile, tablet, and desktop
+	•	Section animation triggering using IntersectionObserver
+	•	Navigation and scroll behavior
+	•	Social media link functionality
+	•	SEO essentials: robots.txt, sitemap.xml, meta tags, and hreflang attributes
+
+Cypress Automated Testing:
+	•	End-to-End tests for navigation, contact form, and language switch
+	•	Error handling tests (e.g., submitting empty form)
+	•	i18n (multilingual) interface checks
+	•	UI elements presence and visibility
+	•	Form success and failure paths
+	•	Scroll and animation checks
+
+Tools & Technologies:
+	•	Cypress
+	•	Git & GitHub
+	•	GitHub Actions (CI pipeline)
+	•	Visual Studio Code
 ## Author
 
 **Kristina Masiulytė Tomkienė**  
