@@ -601,39 +601,43 @@ section::after {
 }
 
 .svg-call-button {
-  display: none;
   position: fixed;
-  bottom: 80px;
+  bottom: 90px;
   right: 20px;
+  z-index: 1000;
   width: 60px;
   height: 60px;
-  z-index: 999;
   background-color: #fdd835;
   border-radius: 50%;
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px;
   transition: transform 0.3s ease;
 }
 
 .svg-call-button svg {
-  width: 100%;
-  height: 100%;
+  width: 36px;
+  height: 36px;
+  transition: transform 0.2s ease;
 }
 
-.svg-call-button .receiver {
-  transform-origin: center;
-  transition: transform 0.3s ease;
+.svg-call-button:active svg {
+  animation: lift-receiver 0.5s ease;
 }
 
-.svg-call-button:active .receiver {
-  transform: rotate(-30deg) translateY(-5px) scale(1.1);
+@keyframes lift-receiver {
+  0% { transform: translateY(0); }
+  25% { transform: translateY(-6px) rotate(-10deg); }
+  50% { transform: translateY(-8px) rotate(10deg); }
+  75% { transform: translateY(-6px) rotate(-10deg); }
+  100% { transform: translateY(0); }
 }
 
-/* Tik mobiliems įrenginiams */
-@media (max-width: 768px) {
+/* Tik mobiliesiems */
+@media (min-width: 768px) {
   .svg-call-button {
-    display: flex;
+    display: none;
   }
 }
+
