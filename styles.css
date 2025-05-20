@@ -600,44 +600,72 @@ section::after {
   }
 }
 
-.svg-call-button {
+.call-now-button {
   position: fixed;
-  bottom: 90px;
-  right: 20px;
-  z-index: 1000;
-  width: 60px;
-  height: 60px;
-  background-color: #fdd835;
-  border-radius: 50%;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  bottom: 6.5rem;
+  right: 1.5rem;
   display: flex;
-  justify-content: center;
   align-items: center;
-  transition: transform 0.3s ease;
+  background-color: #fdd835;
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  animation: pulse 2.5s infinite;
+  z-index: 999;
 }
 
-.svg-call-button svg {
-  width: 36px;
-  height: 36px;
-  transition: transform 0.2s ease;
+.call-now-button .phone-icon {
+  width: 32px;
+  height: 32px;
+  margin-right: 0.5rem;
+  animation: ring 1.5s infinite ease-in-out;
 }
 
-.svg-call-button:active svg {
-  animation: lift-receiver 0.5s ease;
+.call-now-button .call-text {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #222;
 }
 
-@keyframes lift-receiver {
-  0% { transform: translateY(0); }
-  25% { transform: translateY(-6px) rotate(-10deg); }
-  50% { transform: translateY(-8px) rotate(10deg); }
-  75% { transform: translateY(-6px) rotate(-10deg); }
-  100% { transform: translateY(0); }
+/* Pulsavimas */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Ragelio linguojimas */
+@keyframes ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  20% {
+    transform: rotate(-15deg);
+  }
+  40% {
+    transform: rotate(15deg);
+  }
+  60% {
+    transform: rotate(-10deg);
+  }
+  80% {
+    transform: rotate(10deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
 }
 
 /* Tik mobiliesiems */
 @media (min-width: 768px) {
-  .svg-call-button {
+  .call-now-button {
     display: none;
   }
 }
-

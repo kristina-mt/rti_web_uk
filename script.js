@@ -168,12 +168,4 @@ if (hamburger && navLinks) {
 
   sections.forEach(section => observer.observe(section));
 });
-document.addEventListener("DOMContentLoaded", function () {
-  const callBtn = document.querySelector(".svg-call-button");
-  if (callBtn) {
-    callBtn.addEventListener("click", function () {
-      this.style.transform = "translateY(-10px) rotate(-20deg) scale(1.2)";
-    });
-  }
-});
 
