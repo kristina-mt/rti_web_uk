@@ -606,7 +606,7 @@ section::after {
   right: 1.5rem;
   display: flex;
   align-items: center;
-  background-color: #fdd835;
+  background-color: #0d2cb6;
   border-radius: 999px;
   padding: 0.5rem 1rem;
   text-decoration: none;
@@ -661,6 +661,7 @@ section::after {
   100% {
     transform: rotate(0deg);
   }
+
 }
 
 /* Tik mobiliesiems */
