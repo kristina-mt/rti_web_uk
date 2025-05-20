@@ -599,3 +599,41 @@ section::after {
     max-width: 90%;
   }
 }
+
+.svg-call-button {
+  display: none;
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  z-index: 999;
+  background-color: #fdd835;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  transition: transform 0.3s ease;
+}
+
+.svg-call-button svg {
+  width: 100%;
+  height: 100%;
+}
+
+.svg-call-button .receiver {
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+
+.svg-call-button:active .receiver {
+  transform: rotate(-30deg) translateY(-5px) scale(1.1);
+}
+
+/* Tik mobiliems įrenginiams */
+@media (max-width: 768px) {
+  .svg-call-button {
+    display: flex;
+  }
+}
