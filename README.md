@@ -4,83 +4,117 @@
 **Project Name**: RTi Auto Locksmith  
 **Project Type**: Multi-language service website
 
-## Description
+---
 
-This website showcases RTi Auto Locksmith's automotive locksmith services across the United Kingdom. It includes:
+## 📄 Description
 
-- Car key programming, duplication, repairs
-- Emergency lockout assistance
-- Ignition lock repair
-- ECU remapping
-- Professional training
-- Global postal service for repairs
+This responsive website promotes RTi Auto Locksmith's full-range UK-wide services, including:
 
-## Features
+- 🚗 Car key programming, duplication, and repairs
+- 🔓 Emergency car lockout assistance
+- 🔧 Ignition lock repair
+- ⚙️ ECU remapping
+- 🎓 Automotive training programs
+- 🌍 Global postal service for repairs (send locks via mail)
 
-- 💬 Multilingual support: English, Lithuanian, Russian, Polish
-- 📱 Integrated social media icons (top and footer)
-- 📦 Postal service information and form
-- 📤 Netlify-powered contact form
-- 🔼 Back to Top button
-- 📱 Mobile-responsive design
+---
 
-## Technologies Used
+## 🌟 Features
 
-- **HTML5**
-- **CSS3**
-- **JavaScript**
-- **Netlify (form handling)**
-- **Font Awesome (icons)**
+- 🌐 Multilingual interface: **English, Lithuanian, Russian, Polish**
+- 📞 "Call Now" animated mobile button with SVG icon
+- 📨 Contact form with **Netlify** integration
+- 📬 Downloadable form for postal service
+- 🚀 SEO optimized: `robots.txt`, `sitemap.xml`, `meta`, `hreflang`, JSON-LD
+- 📱 Mobile-first responsive layout
+- 🧭 Scroll-triggered animations with `IntersectionObserver`
+- 🔼 Back-to-top floating button
+- 🔗 Social media links (header + footer)
 
-## Local Setup
+---
 
-1. Clone or download the project.
-2. Open `index.html` in your browser or use [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer).
-3. All dynamic behavior is handled via `translations.js` and `script.js`.
+## 🛠 Technologies Used
 
-## Structure
+- HTML5 + CSS3 + JavaScript
+- Netlify (contact form processing)
+- Font Awesome (icons)
+- SVG animation (custom)
+- Git + GitHub
+- Visual Studio Code
+
+---
+
+## 📁 Project Structure
 
 ```
-📁 project-root
+project-root/
 │
 ├── index.html
 ├── styles.css
 ├── script.js
 ├── translations.js
-├── images/
-│   └── logo.webp, flag-gb.svg, ...
+├── robots.txt
+├── sitemap.xml
+├── README.md
+│
+├── en/
+│   └── thanks.html
+├── lt/
+│   └── thanks.html
+├── pl/
+│   └── thanks.html
+├── ru/
+│   └── thanks.html
+│
+└── images/
+    ├── logo.webp
+    ├── flag-gb.svg, flag-lt.svg, ...
+    └── icons (whatsapp-icon.png, etc.)
 ```
-QA Testing
-
-This website was tested using both manual methods and Cypress automated tests to ensure high functionality, usability, and responsiveness across multiple devices and languages.
-
-Manual Testing Included:
-	•	Netlify form field validation (required fields, email format)
-	•	Language switching with real-time content and placeholder updates
-	•	Responsive design checks on mobile, tablet, and desktop
-	•	Section animation triggering using IntersectionObserver
-	•	Navigation and scroll behavior
-	•	Social media link functionality
-	•	SEO essentials: robots.txt, sitemap.xml, meta tags, and hreflang attributes
-
-Cypress Automated Testing:
-	•	End-to-End tests for navigation, contact form, and language switch
-	•	Error handling tests (e.g., submitting empty form)
-	•	i18n (multilingual) interface checks
-	•	UI elements presence and visibility
-	•	Form success and failure paths
-	•	Scroll and animation checks
-
-Tools & Technologies:
-	•	Cypress
-	•	Git & GitHub
-	•	GitHub Actions (CI pipeline)
-	•	Visual Studio Code
-## Author
-
-**Kristina Masiulytė Tomkienė**  
-Created for the RTi Auto Locksmith project.
 
 ---
 
-This website provides quick access to automotive key services in the UK and allows communication in your preferred language.
+## 🧪 QA Testing Summary
+
+### ✅ Manual Testing
+
+- Netlify contact form validation (required fields, valid email)
+- Language switching (texts + placeholders)
+- Responsive display on mobile/tablet/desktop
+- Navigation links and scroll anchors
+- Social media icon behavior
+- Call Now button animation and functionality
+- SEO setup validation via:
+  - Google Search Console
+  - DuckDuckGo / Brave / Bing
+  - `robots.txt` + `sitemap.xml` correctness
+
+### 🤖 Cypress Automated Testing
+
+- Navigation flow (multi-page, multi-language)
+- Contact form submission (success & error)
+- Language switching checks
+- UI visibility and layout tests
+- Edge cases (404 fallback, mobile menu behavior)
+- GitHub Actions CI pipeline integration
+
+---
+
+## 📡 Deployment
+
+Hosted on **Netlify**, accessible via:
+
+```
+https://www.rtiautolocksmith.co.uk/
+```
+
+---
+
+## 👤 Author
+
+**Kristina Masiulytė Tomkienė**  
+Website owner and QA specialist
+
+---
+
+_This multilingual, responsive and SEO-optimized site serves drivers across the UK, offering quick help with keys, lockouts and ignition issues. Accessible in your preferred language – anytime, anywhere._
