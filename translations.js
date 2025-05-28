@@ -3,7 +3,8 @@ const translations = {
     "hero-title": "Fast and reliable auto locksmith service",
     "hero-sub":
       "Car keys, motorcycles, vans, lorries – programming, duplication, ECU remapping, emergency unlocking",
-    "banner-text": "🔐 24/7 UK-wide emergency service. Call us on 07850671304",
+    "banner-text": "🔐 24/7 UK-wide emergency service.",
+    "hero-phone": "📞 Call 07850671304 or WhatsApp",
     "contact-button": "Contact Us",
     "about-title": "About Us",
 "about-text": `
@@ -161,7 +162,7 @@ Below is a general guide to our service rates:</p>
     "hero-title": "Greita ir patikima automobilių raktų pagalba",
     "hero-sub":
       "Automobiliai, motociklai, autobusiukai, vilkikai – programavimas, kopijavimas, ECU remapas",
-    "banner-text": "🔐 24/7 pagalba visoje JK. Paskambink 07850671304",
+    "banner-text": "🔐 24/7 pagalba visoje JK.",
     "contact-button": "Susisiekti",
     "about-title": "Apie mus",
 "about-text": `
@@ -323,7 +324,7 @@ Mūsų programavimo paslaugos apima:</p>
     "hero-title": "Быстрая и надежная помощь с ключами",
     "hero-sub":
       "Автомобили, мотоциклы, грузовики – программирование, копирование, ECU ремап",
-    "banner-text": "🔐 Круглосуточная помощь по всей Великобритании 07850671304",
+    "banner-text": "🔐 Круглосуточная помощь по всей Великобритании",
     "contact-button": "Связаться",
    "about-title": "О нас",
 "about-text": `
@@ -485,7 +486,7 @@ RTi Auto Locksmith предлагает профессиональный сер�
     "hero-title": "Szybka i niezawodna pomoc z kluczami",
     "hero-sub":
       "Samochody, motocykle, ciężarówki – programowanie, kopiowanie, remap ECU",
-    "banner-text": "🔐 Pomoc 24/7 na terenie całego UK 07850671304",
+    "banner-text": "🔐 Pomoc 24/7 na terenie całego UK",
     "contact-button": "Skontaktuj się",
     "about-title": "O nas",
     "about-title": "O nas",
