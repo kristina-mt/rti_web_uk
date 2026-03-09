@@ -763,3 +763,623 @@ footer p {
     width: 140px;
   }
 }
+.city-hero a {
+  color: #ffcc00;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.city-hero a:hover {
+  text-decoration: underline;
+}
+
+.city-hero h2 {
+  color: #ffffff;
+  margin: 10px 0 20px;
+  font-size: 2rem;
+}
+
+.city-hero p {
+  max-width: 900px;
+  margin: 12px auto;
+  line-height: 1.7;
+}
+
+.city-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.city-page section {
+  margin-bottom: 40px;
+}
+.city-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px 40px;
+}
+
+.city-hero {
+  text-align: center;
+  padding: 40px 20px 60px;
+}
+
+.city-hero h1 {
+  color: #ffcc00;
+  margin-bottom: 20px;
+}
+
+.city-hero h2 {
+  color: #ffffff;
+  margin: 10px auto 25px;
+  font-size: 2.2rem;
+  line-height: 1.3;
+  max-width: 900px;
+}
+
+.city-hero p {
+  color: #ffffff;
+  max-width: 900px;
+  margin: 14px auto;
+  line-height: 1.8;
+}
+
+.city-hero a {
+  color: #ffcc00;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.city-hero a:hover {
+  text-decoration: underline;
+}
+
+.city-page .cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.city-page .btn,
+.city-page .primary-call,
+.city-page .whatsapp-btn {
+  display: inline-block;
+  background: #ffcc00;
+  color: #111 !important;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 14px 28px;
+  border-radius: 999px;
+  border: none;
+}
+
+.city-page .btn:hover,
+.city-page .primary-call:hover,
+.city-page .whatsapp-btn:hover {
+  opacity: 0.9;
+}
+
+.city-page .section-fade-left {
+  background: rgba(10, 16, 30, 0.92);
+  color: #ffffff;
+  margin: 28px 0;
+  padding: 32px 28px;
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.city-page .section-fade-left h2 {
+  color: #ffcc00;
+  margin-bottom: 18px;
+}
+
+.city-page .section-fade-left p,
+.city-page .section-fade-left li {
+  color: #ffffff;
+  line-height: 1.8;
+}
+
+.city-page .section-fade-left ul {
+  padding-left: 20px;
+}
+
+@media (max-width: 768px) {
+  .city-hero h2 {
+    font-size: 1.7rem;
+  }
+
+  .city-page .section-fade-left {
+    padding: 24px 18px;
+  }
+}
+.hero-logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+
+.logo-left {
+  position: relative;
+  width: 200px;
+  height: auto;
+  margin: 0 auto;
+  z-index: 3;
+  opacity: 0.98;
+}
+
+.city-hero h1 {
+  max-width: 950px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.15;
+}
+
+.city-page .contact-card p {
+  margin: 10px 0;
+}
+
+.city-page .contact-card a {
+  color: #ffcc00 !important;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.city-page .contact-card a:hover {
+  text-decoration: underline;
+}
+
+.city-page .contact-card .back-link {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: #ffcc00;
+  color: #111 !important;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.city-page .contact-card .back-link:hover {
+  opacity: 0.9;
+  text-decoration: none;
+}
+.city-page .contact-card {
+  text-align: left;
+}
+
+.city-page .contact-card .contact-intro {
+  margin-bottom: 18px;
+}
+
+.city-page .contact-card .contact-details {
+  margin: 18px 0 24px;
+}
+
+.city-page .contact-card .contact-details p {
+  margin: 10px 0;
+  font-size: 1.05rem;
+}
+
+.city-page .contact-card .contact-details span {
+  color: #ffcc00;
+  font-weight: 700;
+  margin-right: 6px;
+}
+
+.city-page .contact-card .contact-details a {
+  color: #ffffff !important;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.city-page .contact-card .contact-details a:hover {
+  color: #ffcc00 !important;
+  text-decoration: underline;
+}
+
+.city-page .contact-card .contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 10px;
+}
+
+.city-page .contact-card .back-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+  border-radius: 999px;
+  background: transparent;
+  border: 2px solid #1b1b19;
+  color: #ffcc00 !important;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.city-page .contact-card .back-link:hover {
+  background: #ffcc00;
+  color: #111111 !important;
+  text-decoration: none;
+}
+.city-page .btn,
+.city-page .primary-call,
+.city-page .whatsapp-btn {
+  background: #ffcc00;
+  color: #111111 !important;
+  font-weight: 700;
+}
+
+.city-page .btn:hover,
+.city-page .primary-call:hover,
+.city-page .whatsapp-btn:hover {
+  background: #ffd633;
+  color: #111111 !important;
+}
+.city-page .contact-actions a {
+  color: #111111 !important;
+}.city-page .btn {
+  padding: 14px 28px;
+  font-size: 1rem;
+}
+.city-page .nearby-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  list-style: none;
+  padding: 0;
+  margin-top: 18px;
+}
+
+.city-page .nearby-links li {
+  margin: 0;
+}
+
+.city-page .nearby-links a {
+  display: block;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: rgba(255, 204, 0, 0.08);
+  border: 1px solid rgba(255, 204, 0, 0.2);
+  color: #ffffff !important;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.city-page .nearby-links a:hover {
+  background: rgba(255, 204, 0, 0.16);
+  color: #ffcc00 !important;
+}
+.city-page .faq-item + .faq-item {
+  margin-top: 18px;
+}
+
+.city-page .faq-item h3 {
+  color: #ffcc00;
+  font-size: 1.15rem;
+  margin-bottom: 8px;
+}
+
+.city-page .faq-item p {
+  margin: 0;
+}
+/* ===========================
+   HOMEPAGE SEO SECTIONS
+=========================== */
+
+.services p,
+.about p,
+.pricing p,
+.training p,
+.why-us p,
+#ecu-services p,
+#mileage p,
+#service-areas p,
+.postal-block p {
+  max-width: 950px;
+  margin: 0 auto 16px;
+  line-height: 1.8;
+  color: var(--text-main);
+}
+
+.services h2,
+.about h2,
+.pricing h2,
+.training h2,
+.why-us h2,
+#ecu-services h2,
+#mileage h2,
+#service-areas h2,
+.postal-block h2 {
+  text-align: center;
+  color: var(--primary);
+  margin-bottom: 22px;
+}
+
+.services ul,
+.why-us ul {
+  max-width: 950px;
+  margin: 24px auto 0;
+  padding-left: 22px;
+  line-height: 1.9;
+}
+
+.services li,
+.why-us li {
+  margin-bottom: 10px;
+  color: var(--text-main);
+}
+
+#ecu-services,
+#mileage,
+#service-areas,
+.services,
+.about,
+.pricing,
+.training,
+.why-us,
+.postal-block {
+  background: radial-gradient(circle at top left, #1d2333 0, #111522 60%);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  padding: 42px 28px;
+}
+
+#service-areas {
+  margin-top: 32px;
+}
+
+.location-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+  list-style: none;
+  padding: 0;
+  margin: 26px auto 10px;
+  max-width: 1000px;
+}
+
+.location-links li {
+  margin: 0;
+}
+
+.location-links a {
+  display: block;
+  padding: 14px 18px;
+  border-radius: 14px;
+  background: rgba(255, 204, 0, 0.08);
+  border: 1px solid rgba(255, 204, 0, 0.2);
+  color: #ffffff !important;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.2s ease, transform 0.15s ease, border-color 0.2s ease;
+}
+
+.location-links a:hover {
+  background: rgba(255, 204, 0, 0.16);
+  border-color: rgba(255, 204, 0, 0.45);
+  color: var(--primary) !important;
+  transform: translateY(-2px);
+}
+
+.postal-block {
+  text-align: center;
+}
+
+.why-us ul {
+  list-style: disc;
+}
+
+.services strong,
+.why-us strong {
+  color: var(--primary);
+}
+
+#ecu-services,
+#mileage {
+  text-align: left;
+}
+
+#ecu-services h2,
+#mileage h2 {
+  text-align: center;
+}
+
+/* Contact section polishing for homepage */
+.contact h2 {
+  text-align: center;
+  color: var(--primary);
+  margin-bottom: 20px;
+}
+
+.contact-block h3 {
+  color: var(--primary);
+  margin-bottom: 12px;
+}
+
+.contact-block strong {
+  color: #ffffff;
+}
+
+.contact-block p {
+  color: var(--text-main);
+}
+
+/* Better hero text width */
+.hero h1,
+.hero h2,
+.hero p {
+  max-width: 980px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Responsive homepage SEO sections */
+@media (max-width: 768px) {
+  #ecu-services,
+  #mileage,
+  #service-areas,
+  .services,
+  .about,
+  .pricing,
+  .training,
+  .why-us,
+  .postal-block {
+    padding: 30px 18px;
+  }
+
+  .location-links {
+    grid-template-columns: 1fr;
+  }
+
+  .services ul,
+  .why-us ul {
+    padding-left: 18px;
+  }
+}
+#faq {
+  background: radial-gradient(circle at top left, #1d2333 0, #111522 60%);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  padding: 42px 28px;
+}
+
+#faq h2 {
+  text-align: center;
+  color: var(--primary);
+  margin-bottom: 24px;
+}
+
+#faq .faq-item + .faq-item {
+  margin-top: 20px;
+}
+
+#faq .faq-item h3 {
+  color: var(--primary);
+  margin-bottom: 8px;
+  font-size: 1.15rem;
+}
+
+#faq .faq-item p {
+  max-width: 950px;
+  line-height: 1.8;
+  color: var(--text-main);
+}
+#service-areas p {
+  text-align: center;
+}
+
+#service-areas .location-links {
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+.top-phone{
+background:#111827;
+color:#fff;
+text-align:center;
+padding:10px;
+font-weight:600;
+font-size:14px;
+}
+
+.top-phone a{
+color:#ffcc00;
+text-decoration:none;
+}
+
+.hero-phone{
+margin-top:10px;
+font-size:25px;
+font-weight:600;
+}
+
+.hero-phone a{
+color:#ffcc00;
+text-decoration:none;
+}
+
+.area-phone{
+text-align:center;
+margin-top:20px;
+font-weight:600;
+font-size:20px;
+}
+
+.area-phone a{
+color:#ffcc00;
+text-decoration:none;
+}
+/* ===========================
+   PHONE + NEAR ME SEO
+=========================== */
+
+.top-phone {
+  background: #111827;
+  color: #ffffff;
+  text-align: center;
+  padding: 10px 14px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.top-phone a {
+  color: #ffcc00;
+  text-decoration: none;
+}
+
+.top-phone a:hover {
+  text-decoration: underline;
+}
+
+.hero-phone {
+  margin-top: 10px;
+  margin-bottom: 14px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.hero-phone a {
+  color: #ffcc00;
+  text-decoration: none;
+}
+
+.hero-phone a:hover {
+  text-decoration: underline;
+}
+
+.area-phone {
+  text-align: center;
+  margin-top: 22px;
+  font-weight: 700;
+  font-size: 17px;
+}
+
+.area-phone a {
+  color: #ffcc00;
+  text-decoration: none;
+}
+
+.area-phone a:hover {
+  text-decoration: underline;
+}
+
+/* Make strong text readable in hero */
+.hero strong,
+#service-areas strong {
+  color: #ffcc00;
+}
+
+/* Footer links readability */
+footer a {
+  color: #ffcc00;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}

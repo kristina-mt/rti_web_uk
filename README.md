@@ -1,120 +1,279 @@
-# RTi Auto Locksmith – 24/7 UK Car Key Services
-
-**Author**: Kristina Masiulytė Tomkienė  
-**Project Name**: RTi Auto Locksmith  
-**Project Type**: Multi-language service website
+# RTi Auto Locksmith – Mobile Auto Locksmith Website
 
 ---
 
-## 📄 Description
+# 🚗 RTi Auto Locksmith
 
-This responsive website promotes RTi Auto Locksmith's full-range UK-wide services, including:
+Professional mobile auto locksmith website designed for **North West England drivers**.
 
-- 🚗 Car key programming, duplication, and repairs
-- 🔓 Emergency car lockout assistance
-- 🔧 Ignition lock repair
-- ⚙️ ECU remapping
-- 🎓 Automotive training programs
-- 🌍 Global postal service for repairs (send locks via mail)
+The website promotes services such as:
 
----
+- Car key replacement
+- Car key programming
+- Emergency vehicle unlocking
+- Ignition repair
+- ECU repair, remap and cloning
+- Mileage correction
+- Van and motorcycle key services
 
-## 🌟 Features
-
-- 🌐 Multilingual interface: **English, Lithuanian, Russian, Polish**
-- 📞 "Call Now" animated mobile button with SVG icon
-- 📨 Contact form with **Netlify** integration
-- 📬 Downloadable form for postal service
-- 🚀 SEO optimized: `robots.txt`, `sitemap.xml`, `meta`, `hreflang`, JSON-LD
-- 📱 Mobile-first responsive layout
-- 🧭 Scroll-triggered animations with `IntersectionObserver`
-- 🔼 Back-to-top floating button
-- 🔗 Social media links (header + footer)
+The site is built with **SEO optimisation and mobile usability in mind** to help customers find services quickly when searching online.
 
 ---
 
-## 🛠 Technologies Used
+# 🌍 Live Website
 
-- HTML5 + CSS3 + JavaScript
-- Netlify (contact form processing)
-- Font Awesome (icons)
-- SVG animation (custom)
-- Git + GitHub
+https://www.rtiautolocksmith.co.uk
+
+---
+
+# 📄 Project Overview
+
+This project demonstrates a **real business website** built using modern frontend techniques and SEO strategies.
+
+Main goals of the project:
+
+- create a fast mobile-friendly service website
+- improve Google visibility for **local locksmith searches**
+- generate **city landing pages automatically**
+- implement **QA testing and automation**
+- demonstrate **web development + testing skills**
+
+---
+
+# 🌟 Key Features
+
+### 📱 Mobile-First Design
+
+Fully responsive layout optimized for:
+
+- mobile devices
+- tablets
+- desktop browsers
+
+Includes:
+
+- hamburger menu
+- floating call button
+- fast contact access
+
+---
+
+### 🔎 SEO Optimisation
+
+The site includes full SEO setup:
+
+- robots.txt
+- sitemap.xml
+- structured data (JSON-LD)
+- Open Graph meta tags
+- canonical URLs
+- location-based landing pages
+
+Optimised for keywords such as:
+
+- auto locksmith near me
+- car key replacement near me
+- mobile auto locksmith near me
+
+---
+
+### 📍 Location Landing Pages
+
+The site automatically generates SEO pages such as:
+liverpool-auto-locksmith.html
+manchester-auto-locksmith.html
+preston-auto-locksmith.html
+wigan-auto-locksmith.html
+bolton-auto-locksmith.html
+blackburn-auto-locksmith.html
+
+Each page contains:
+
+- unique content
+- service descriptions
+- internal linking
+- FAQ schema
+- local area mentions
+
+---
+
+### ☎️ Quick Contact Features
+
+Users can easily contact the locksmith via:
+
+- Call Now mobile button
+- WhatsApp link
+- contact form
+
+The site includes:
+
+- Netlify contact form integration
+- form validation
+- thank-you page redirect
+
+---
+
+### ⚡ UI Enhancements
+
+User experience improvements include:
+
+- scroll animations using `IntersectionObserver`
+- animated mobile call button
+- smooth navigation scrolling
+- responsive image sections
+- service highlight sections
+
+---
+
+# 🛠 Technologies Used
+
+Frontend:
+
+- HTML5
+- CSS3
+- JavaScript
+
+Tools:
+
 - Visual Studio Code
+- Git
+- GitHub
+
+Testing:
+
+- Cypress
+
+Deployment:
+
+- Netlify
+
+Libraries:
+
+- Font Awesome icons
 
 ---
 
-## 📁 Project Structure
-
-```
+# 📁 Project Structure
 project-root/
 │
 ├── index.html
 ├── styles.css
 ├── script.js
-├── translations.js
+│
+├── generate-pages.js
 ├── robots.txt
 ├── sitemap.xml
-├── README.md
 │
-├── en/
-│   └── thanks.html
-├── lt/
-│   └── thanks.html
-├── pl/
-│   └── thanks.html
-├── ru/
-│   └── thanks.html
+├── thanks.html
 │
-└── images/
-    ├── logo.webp
-    ├── flag-gb.svg, flag-lt.svg, ...
-    └── icons (whatsapp-icon.png, etc.)
-```
+├── images/
+│
+└── city-pages/
+liverpool-auto-locksmith.html
+manchester-auto-locksmith.html
+preston-auto-locksmith.html
+wigan-auto-locksmith.html
+project-root/
+│
+├── index.html
+├── styles.css
+├── script.js
+│
+├── generate-pages.js
+├── robots.txt
+├── sitemap.xml
+│
+├── thanks.html
+│
+├── images/
+│
+└── city-pages/
+liverpool-auto-locksmith.html
+manchester-auto-locksmith.html
+preston-auto-locksmith.html
+wigan-auto-locksmith.html
 
 ---
 
-## 🧪 QA Testing Summary
+# ⚙️ City Page Generator
 
-### ✅ Manual Testing
+Location pages are automatically generated using:
+generate-pages.js
 
-- Netlify contact form validation (required fields, valid email)
-- Language switching (texts + placeholders)
-- Responsive display on mobile/tablet/desktop
-- Navigation links and scroll anchors
-- Social media icon behavior
-- Call Now button animation and functionality
-- SEO setup validation via:
-  - Google Search Console
-  - DuckDuckGo / Brave / Bing
-  - `robots.txt` + `sitemap.xml` correctness
+Run the generator:
 
-### 🤖 Cypress Automated Testing
+```bash
+node generate-pages.js
+This script automatically creates:
 
-- Navigation flow (multi-page, multi-language)
-- Contact form submission (success & error)
-- Language switching checks
-- UI visibility and layout tests
-- Edge cases (404 fallback, mobile menu behavior)
-- GitHub Actions CI pipeline integration
+SEO city pages
 
----
+sitemap entries
+🧪 QA Testing
 
-## 📡 Deployment
+Testing includes manual QA testing and automated testing.
 
-Hosted on **Netlify**, accessible via:
+Manual Testing
 
-```
-https://www.rtiautolocksmith.co.uk/
-```
+Test scenarios covered:
 
----
+responsive design
 
-## 👤 Author
+navigation links
 
-**Kristina Masiulytė Tomkienė**  
-Website owner and QA specialist
+contact form validation
 
----
+mobile call button
 
-_This multilingual, responsive and SEO-optimized site serves drivers across the UK, offering quick help with keys, lockouts and ignition issues. Accessible in your preferred language – anytime, anywhere._
+internal SEO links
+
+page rendering
+
+Automated Testing (Cypress)
+
+Automated tests include:
+
+navigation testing
+
+UI visibility checks
+
+form validation tests
+
+responsive layout tests
+
+edge case scenarios
+
+Testing pipeline is integrated with GitHub Actions.
+
+📡 Deployment
+
+Website hosted using Netlify
+
+Live site:
+
+https://www.rtiautolocksmith.co.uk
+👩‍💻 Author
+
+Kristina Masiulytė Tomkienė
+
+QA Tester
+Web Developer
+Automation Tester
+
+GitHub Portfolio Project
+
+📌 Purpose of the Project
+
+This project demonstrates:
+
+real-world service website development
+
+SEO-optimised website architecture
+
+QA testing methodology
+
+automated testing implementation
+
+modern responsive web design
+
+RTi Auto Locksmith provides fast and reliable mobile locksmith services for drivers across North West England.
