@@ -66,6 +66,12 @@ function slugify(city) {
     .trim()
     .replace(/\s+/g, "-");
 }
+
+function pickVariant(list, city) {
+  const index = city.length % list.length;
+  return list[index](city);
+}
+
 const introVariants = [
   (city) => `Need a reliable auto locksmith in ${city}? RTi Auto Locksmith provides fast mobile support for lost car keys, spare keys, car key programming, ignition problems and emergency vehicle unlocking across ${city} and nearby areas.`,
   (city) => `Looking for a trusted auto locksmith in ${city}? RTi Auto Locksmith offers mobile help with car key replacement, lockouts, ignition faults and key programming throughout ${city} and surrounding locations.`,
@@ -100,6 +106,7 @@ const contactVariants = [
   (city) => `If you need car key replacement, key programming or emergency vehicle unlocking in ${city}, contact RTi Auto Locksmith today.`,
   (city) => `For fast mobile auto locksmith assistance in ${city}, contact RTi Auto Locksmith with your vehicle details and location.`
 ];
+
 const cityAreas = {
   Liverpool: ["Bootle", "Huyton", "Kirkby"],
   Manchester: ["Salford", "Stretford", "Stockport"],
@@ -152,126 +159,136 @@ const cityAreas = {
   "Poulton-le-Fylde": ["Blackpool", "Cleveleys", "Fleetwood"],
   Cleveleys: ["Fleetwood", "Blackpool", "Poulton-le-Fylde"]
 };
+
 function cityPageTemplate(city) {
   const slug = slugify(city);
   const filename = `${slug}-auto-locksmith.html`;
   const canonical = `${siteUrl}/${filename}`;
   const title = `${city} Auto Locksmith | Car Key Replacement ${city} | RTi Auto Locksmith`;
   const description = `Professional auto locksmith in ${city}. Car key replacement, car key programming, ignition repair and emergency unlocking across ${city} and surrounding areas.`;
-const introText = pickVariant(introVariants, city);
-const supportText = pickVariant(supportVariants, city);
-const whyChooseText = pickVariant(whyChooseVariants, city);
-const nearbyText = pickVariant(nearbyVariants, city);
-const contactText = pickVariant(contactVariants, city);
-const localAreas = cityAreas[city] || ["nearby towns", "surrounding areas", "local locations"];
-  function pickVariant(list, city) {
-  const index = city.length % list.length;
-  return list[index](city);
-}
- return {
-  filename,
-  content: `<!DOCTYPE html>
+
+  const introText = pickVariant(introVariants, city);
+  const supportText = pickVariant(supportVariants, city);
+  const whyChooseText = pickVariant(whyChooseVariants, city);
+  const nearbyText = pickVariant(nearbyVariants, city);
+  const contactText = pickVariant(contactVariants, city);
+  const localAreas = cityAreas[city] || ["nearby towns", "surrounding areas", "local locations"];
+
+  return {
+    filename,
+    content: `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#FFCC00" />
+
   <title>${title}</title>
   <meta name="description" content="${description}" />
   <meta name="robots" content="index, follow" />
+
   <link rel="canonical" href="${canonical}" />
+  <link rel="alternate" hreflang="en-GB" href="${canonical}" />
+  <link rel="alternate" hreflang="x-default" href="${canonical}" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
   <link rel="stylesheet" href="styles.css" />
-<script src="script.js" defer></script>
+  <script src="script.js" defer></script>
+
   <meta property="og:title" content="${title}" />
   <meta property="og:description" content="${description}" />
   <meta property="og:url" content="${canonical}" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="${siteUrl}/images/logo.png" />
-
+  <meta property="og:image:alt" content="RTi Auto Locksmith logo" />
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Locksmith",
     "name": "RTi Auto Locksmith",
-    "url": "${siteUrl}",
+    "url": "${canonical}",
     "telephone": "${phone.replace(/\s/g, "")}",
     "email": "${email}",
-    "areaServed": "${city}",
+    "areaServed": {
+      "@type": "City",
+      "name": "${city}"
+    },
     "image": "${siteUrl}/images/logo.png",
     "description": "${description}"
   }
   </script>
+
   <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Do you provide lost car key replacement in ${city}?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, RTi Auto Locksmith can assist with lost car key replacement in ${city} for many vehicle makes and models, depending on the key type and system."
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Do you provide lost car key replacement in ${city}?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, RTi Auto Locksmith can assist with lost car key replacement in ${city} for many vehicle makes and models, depending on the key type and system."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can you unlock my vehicle if the keys are locked inside?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, we provide emergency vehicle unlocking support in ${city} and nearby areas where available."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you work with vans and motorcycles?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We may also assist with van key replacement, van key programming and selected motorcycle key services depending on the vehicle."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you offer ECU repair, remap or cloning in ${city}?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We may assist with selected ECU repair, ECU remap and cloning services depending on the make, model and system type."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you provide mileage correction or dashboard calibration?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We may provide support for mileage correction and dashboard calibration where legally permitted and technically suitable for the vehicle system."
+        }
       }
-    },
-    {
-      "@type": "Question",
-      "name": "Can you unlock my vehicle if the keys are locked inside?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, we provide emergency vehicle unlocking support in ${city} and nearby areas where available."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do you work with vans and motorcycles?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "We may also assist with van key replacement, van key programming and selected motorcycle key services depending on the vehicle."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do you offer ECU repair, remap or cloning in ${city}?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "We may assist with selected ECU repair, ECU remap and cloning services depending on the make, model and system type."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do you provide mileage correction or dashboard calibration?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "We may provide support for mileage correction and dashboard calibration where legally permitted and technically suitable for the vehicle system."
-      }
-    }
-  ]
-}
-</script>
+    ]
+  }
+  </script>
 </head>
 <body>
   <main class="city-page">
-  <section class="hero city-hero">
-  <div class="hero-logo">
-    <img src="images/logo.png" alt="RTi Auto Locksmith Logo" class="logo-left" />
-  </div>
+    <section class="hero city-hero">
+      <div class="hero-logo">
+        <img src="images/logo.png" alt="RTi Auto Locksmith Logo" class="logo-left" />
+      </div>
 
-  <h1>${city} Auto Locksmith</h1>
+      <h1>${city} Auto Locksmith</h1>
 
-  <h2>24/7 Mobile Car Key Replacement, Programming and Emergency Unlocking in ${city}</h2>
-<p>${introText}</p>
+      <h2>24/7 Mobile Car Key Replacement, Programming and Emergency Unlocking in ${city}</h2>
+      <p>${introText}</p>
+      <p>${supportText}</p>
 
-<p>${supportText}</p>
-  
-  <p><strong>Call now:</strong> <a href="tel:+447850671304">+44 7850 671304</a></p>
-  <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
+      <p><strong>Call now:</strong> <a href="tel:+447850671304">+44 7850 671304</a></p>
+      <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
 
-  <div class="cta-buttons">
-    <a href="tel:+447850671304" class="btn primary-call">Call Now</a>
-    <a href="https://wa.me/447850671304" target="_blank" rel="noopener" class="btn whatsapp-btn">WhatsApp Us</a>
-  </div>
-</section>
+      <div class="cta-buttons">
+        <a href="tel:+447850671304" class="btn primary-call">Call Now</a>
+        <a href="https://wa.me/447850671304" target="_blank" rel="noopener" class="btn whatsapp-btn">WhatsApp Us</a>
+      </div>
+    </section>
 
     <section class="section-fade-left">
       <h2>Mobile Auto Locksmith Services in ${city}</h2>
@@ -346,56 +363,58 @@ to support drivers across ${city} and surrounding areas.
         becomes worse. Early repair can often prevent a full breakdown situation.
       </p>
     </section>
-<section class="section-fade-left">
-  <h2>ECU Repair, Remap and Cloning in ${city}</h2>
 
-  <p>
-    RTi Auto Locksmith provides support for selected ECU repair, ECU remap and ECU
-    cloning services in ${city}. Modern vehicles rely on electronic control units for
-    engine management, immobiliser communication and other key systems, so faults in these
-    units can cause serious starting and performance issues.
-  </p>
+    <section class="section-fade-left">
+      <h2>ECU Repair, Remap and Cloning in ${city}</h2>
+      <p>
+        RTi Auto Locksmith provides support for selected ECU repair, ECU remap and ECU
+        cloning services in ${city}. Modern vehicles rely on electronic control units for
+        engine management, immobiliser communication and other key systems, so faults in these
+        units can cause serious starting and performance issues.
+      </p>
 
-  <p>
-    In some cases, we may assist with ECU cloning, data transfer, module matching and
-    selected remap-related work depending on the vehicle make, model and existing fault.
-    This can be especially helpful when original units are damaged or when replacement
-    components need to be configured correctly.
-  </p>
+      <p>
+        In some cases, we may assist with ECU cloning, data transfer, module matching and
+        selected remap-related work depending on the vehicle make, model and existing fault.
+        This can be especially helpful when original units are damaged or when replacement
+        components need to be configured correctly.
+      </p>
 
-  <p>
-    If your vehicle has immobiliser problems, ECU communication faults or requires ECU
-    remap or cloning support in ${city}, contact RTi Auto Locksmith with full vehicle
-    details and we will advise on available options.
-  </p>
-</section>
-<section class="section-fade-left">
-  <h2>Mileage Correction and Dashboard Calibration in ${city}</h2>
+      <p>
+        If your vehicle has immobiliser problems, ECU communication faults or requires ECU
+        remap or cloning support in ${city}, contact RTi Auto Locksmith with full vehicle
+        details and we will advise on available options.
+      </p>
+    </section>
 
-  <p>
-    RTi Auto Locksmith may also assist with mileage correction and dashboard
-    calibration services in ${city} where legally permitted and appropriate.
-    Modern vehicles store mileage data in instrument clusters and electronic
-    control units, and these values may sometimes need adjustment after
-    dashboard replacement, ECU replacement or module repair.
-  </p>
+    <section class="section-fade-left">
+      <h2>Mileage Correction and Dashboard Calibration in ${city}</h2>
 
-  <p>
-    Mileage correction services may involve recalibrating the instrument
-    cluster or synchronising mileage data between vehicle modules. This can
-    help ensure that the displayed mileage matches the correct system data
-    following component replacement or electronic repair.
-  </p>
+      <p>
+        RTi Auto Locksmith may also assist with mileage correction and dashboard
+        calibration services in ${city} where legally permitted and appropriate.
+        Modern vehicles store mileage data in instrument clusters and electronic
+        control units, and these values may sometimes need adjustment after
+        dashboard replacement, ECU replacement or module repair.
+      </p>
 
-  <p>
-    If you require mileage correction, odometer calibration or instrument
-    cluster support in ${city}, contact RTi Auto Locksmith with your vehicle
-    make, model and year and we will confirm whether assistance is available.
-  </p>
-</section>
- <section class="section-fade-left">
-<h2>Van and Motorcycle Key Services in ${city}</h2>
-<p>
+      <p>
+        Mileage correction services may involve recalibrating the instrument
+        cluster or synchronising mileage data between vehicle modules. This can
+        help ensure that the displayed mileage matches the correct system data
+        following component replacement or electronic repair.
+      </p>
+
+      <p>
+        If you require mileage correction, odometer calibration or instrument
+        cluster support in ${city}, contact RTi Auto Locksmith with your vehicle
+        make, model and year and we will confirm whether assistance is available.
+      </p>
+    </section>
+
+    <section class="section-fade-left">
+      <h2>Van and Motorcycle Key Services in ${city}</h2>
+      <p>
 RTi Auto Locksmith may also assist with van key replacement and programming
 in ${city}. Vans are essential for many businesses and losing a key can stop
 work completely, so we aim to provide practical solutions where possible.
@@ -405,154 +424,154 @@ work completely, so we aim to provide practical solutions where possible.
 In some cases we may also help with motorcycle key replacement or spare key
 solutions depending on the vehicle make and key type.
 </p>
-</section>
+    </section>
 
-   <section class="section-fade-left">
-  <h2>Why Choose RTi Auto Locksmith in ${city}</h2>
+    <section class="section-fade-left">
+      <h2>Why Choose RTi Auto Locksmith in ${city}</h2>
 
-  <p>${whyChooseText}</p>
+      <p>${whyChooseText}</p>
 
-  <ul>
-    <li>Mobile auto locksmith service across ${city}</li>
-    <li>Lost car key replacement and spare keys</li>
-    <li>Car key programming and transponder key coding</li>
-    <li>Emergency vehicle unlocking service</li>
-    <li>Ignition repair and ignition lock support</li>
-    <li>Van and motorcycle key assistance</li>
-    <li>ECU repair, remap and cloning support</li>
-    <li>Mileage correction and dashboard calibration</li>
-    <li>Coverage across ${city} and nearby towns</li>
-  </ul>
+      <ul>
+        <li>Mobile auto locksmith service across ${city}</li>
+        <li>Lost car key replacement and spare keys</li>
+        <li>Car key programming and transponder key coding</li>
+        <li>Emergency vehicle unlocking service</li>
+        <li>Ignition repair and ignition lock support</li>
+        <li>Van and motorcycle key assistance</li>
+        <li>ECU repair, remap and cloning support</li>
+        <li>Mileage correction and dashboard calibration</li>
+        <li>Coverage across ${city} and nearby towns</li>
+      </ul>
 
-  <p>
-    If you need a reliable auto locksmith in ${city}, contact RTi Auto Locksmith
-    with your vehicle details and location and we will confirm availability in
-    your area.
-  </p>
-</section>
- <section class="section-fade-left">
-  <h2>Areas Near ${city} We May Cover</h2>
-  <p>${nearbyText}</p>
+      <p>
+        If you need a reliable auto locksmith in ${city}, contact RTi Auto Locksmith
+        with your vehicle details and location and we will confirm availability in
+        your area.
+      </p>
+    </section>
 
-  <p>
-    We may also cover nearby places such as <strong>${localAreas[0]}</strong>,
-    <strong>${localAreas[1]}</strong> and <strong>${localAreas[2]}</strong>,
-    depending on distance and availability.
-  </p>
-</section>
+    <section class="section-fade-left">
+      <h2>Areas Near ${city} We May Cover</h2>
+      <p>${nearbyText}</p>
 
-<section class="section-fade-left">
-  <h2>Auto Locksmith Near ${city}</h2>
+      <p>
+        We may also cover nearby places such as <strong>${localAreas[0]}</strong>,
+        <strong>${localAreas[1]}</strong> and <strong>${localAreas[2]}</strong>,
+        depending on distance and availability.
+      </p>
+    </section>
 
-  <p>
-    If you are searching for an auto locksmith near ${city}, RTi Auto Locksmith
-    provides mobile support for drivers across the area. Whether you are at home,
-    at work, in a car park or stranded on the roadside, we aim to help you regain
-    access to your vehicle quickly and safely.
-  </p>
+    <section class="section-fade-left">
+      <h2>Auto Locksmith Near ${city}</h2>
 
-  <p>
-    Many customers contact us when searching online for services such as
-    <strong>auto locksmith near me</strong>,
-    <strong>car key replacement near me</strong> or
-    <strong>emergency vehicle unlocking near me</strong>.
-    Our mobile service is designed to respond to these situations across ${city}
-    and nearby towns.
-  </p>
+      <p>
+        If you are searching for an auto locksmith near ${city}, RTi Auto Locksmith
+        provides mobile support for drivers across the area. Whether you are at home,
+        at work, in a car park or stranded on the roadside, we aim to help you regain
+        access to your vehicle quickly and safely.
+      </p>
 
-  <p>
-    If you have lost your car key, locked your keys inside your vehicle or need
-    a spare key programmed, contact RTi Auto Locksmith to check availability
-    in ${city} and surrounding areas.
-  </p>
-</section>
+      <p>
+        Many customers contact us when searching online for services such as
+        <strong>auto locksmith near me</strong>,
+        <strong>car key replacement near me</strong> or
+        <strong>emergency vehicle unlocking near me</strong>.
+        Our mobile service is designed to respond to these situations across ${city}
+        and nearby towns.
+      </p>
 
-<section class="section-fade-left">
-  <h2>Nearby Auto Locksmith Areas</h2>
+      <p>
+        If you have lost your car key, locked your keys inside your vehicle or need
+        a spare key programmed, contact RTi Auto Locksmith to check availability
+        in ${city} and surrounding areas.
+      </p>
+    </section>
 
-  <p>
-    RTi Auto Locksmith also covers nearby towns and surrounding areas where
-    availability allows. If you are looking for an auto locksmith near ${city},
-    you may also find help in nearby locations across the North West.
-  </p>
+    <section class="section-fade-left">
+      <h2>Nearby Auto Locksmith Areas</h2>
 
-  <ul class="nearby-links">
-    <li><a href="/liverpool-auto-locksmith.html">Liverpool Auto Locksmith</a></li>
-    <li><a href="/manchester-auto-locksmith.html">Manchester Auto Locksmith</a></li>
-    <li><a href="/preston-auto-locksmith.html">Preston Auto Locksmith</a></li>
-    <li><a href="/wigan-auto-locksmith.html">Wigan Auto Locksmith</a></li>
-    <li><a href="/bolton-auto-locksmith.html">Bolton Auto Locksmith</a></li>
-    <li><a href="/blackburn-auto-locksmith.html">Blackburn Auto Locksmith</a></li>
-    <li><a href="/chorley-auto-locksmith.html">Chorley Auto Locksmith</a></li>
-    <li><a href="/blackpool-auto-locksmith.html">Blackpool Auto Locksmith</a></li>
-  </ul>
-</section>
+      <p>
+        RTi Auto Locksmith also covers nearby towns and surrounding areas where
+        availability allows. If you are looking for an auto locksmith near ${city},
+        you may also find help in nearby locations across the North West.
+      </p>
 
-<section class="section-fade-left">
-  <h2>Frequently Asked Questions</h2>
+      <ul class="nearby-links">
+        <li><a href="/liverpool-auto-locksmith.html">Liverpool Auto Locksmith</a></li>
+        <li><a href="/manchester-auto-locksmith.html">Manchester Auto Locksmith</a></li>
+        <li><a href="/preston-auto-locksmith.html">Preston Auto Locksmith</a></li>
+        <li><a href="/wigan-auto-locksmith.html">Wigan Auto Locksmith</a></li>
+        <li><a href="/bolton-auto-locksmith.html">Bolton Auto Locksmith</a></li>
+        <li><a href="/blackburn-auto-locksmith.html">Blackburn Auto Locksmith</a></li>
+        <li><a href="/chorley-auto-locksmith.html">Chorley Auto Locksmith</a></li>
+        <li><a href="/blackpool-auto-locksmith.html">Blackpool Auto Locksmith</a></li>
+      </ul>
+    </section>
 
-  <div class="faq-item">
-    <h3>Do you provide lost car key replacement in ${city}?</h3>
-    <p>
-      Yes, RTi Auto Locksmith can assist with lost car key replacement in ${city}
-      for many vehicle makes and models, depending on the key type and system.
-    </p>
-  </div>
+    <section class="section-fade-left">
+      <h2>Frequently Asked Questions</h2>
 
-  <div class="faq-item">
-    <h3>Can you unlock my vehicle if the keys are locked inside?</h3>
-    <p>
-      Yes, we provide emergency vehicle unlocking support in ${city} and nearby
-      areas where available.
-    </p>
-  </div>
+      <div class="faq-item">
+        <h3>Do you provide lost car key replacement in ${city}?</h3>
+        <p>
+          Yes, RTi Auto Locksmith can assist with lost car key replacement in ${city}
+          for many vehicle makes and models, depending on the key type and system.
+        </p>
+      </div>
 
-  <div class="faq-item">
-    <h3>Do you work with vans and motorcycles?</h3>
-    <p>
-      We may also assist with van key replacement, van key programming and
-      selected motorcycle key services depending on the vehicle.
-    </p>
-  </div>
+      <div class="faq-item">
+        <h3>Can you unlock my vehicle if the keys are locked inside?</h3>
+        <p>
+          Yes, we provide emergency vehicle unlocking support in ${city} and nearby
+          areas where available.
+        </p>
+      </div>
 
-  <div class="faq-item">
-    <h3>Do you offer ECU repair, remap or cloning in ${city}?</h3>
-    <p>
-      We may assist with selected ECU repair, ECU remap and cloning services
-      depending on the make, model and system type.
-    </p>
-  </div>
+      <div class="faq-item">
+        <h3>Do you work with vans and motorcycles?</h3>
+        <p>
+          We may also assist with van key replacement, van key programming and
+          selected motorcycle key services depending on the vehicle.
+        </p>
+      </div>
 
-  <div class="faq-item">
-    <h3>Do you provide mileage correction or dashboard calibration?</h3>
-    <p>
-      We may provide support for mileage correction and dashboard calibration
-      where legally permitted and technically suitable for the vehicle system.
-    </p>
-  </div>
-</section>
+      <div class="faq-item">
+        <h3>Do you offer ECU repair, remap or cloning in ${city}?</h3>
+        <p>
+          We may assist with selected ECU repair, ECU remap and cloning services
+          depending on the make, model and system type.
+        </p>
+      </div>
 
-<section class="section-fade-left contact-card">
-  <h2>Contact RTi Auto Locksmith</h2>
+      <div class="faq-item">
+        <h3>Do you provide mileage correction or dashboard calibration?</h3>
+        <p>
+          We may provide support for mileage correction and dashboard calibration
+          where legally permitted and technically suitable for the vehicle system.
+        </p>
+      </div>
+    </section>
 
-  <p class="contact-intro">${contactText}</p>
+    <section class="section-fade-left contact-card">
+      <h2>Contact RTi Auto Locksmith</h2>
 
-  <div class="contact-details">
-    <p><span>Phone:</span> <a href="tel:+447850671304">${phone}</a></p>
-    <p><span>Email:</span> <a href="mailto:${email}">${email}</a></p>
-  </div>
+      <p class="contact-intro">${contactText}</p>
 
-  <div class="contact-actions">
-    <a href="tel:+447850671304" class="btn primary-call">Call Now</a>
-    <a href="https://wa.me/447850671304" target="_blank" rel="noopener" class="btn whatsapp-btn">WhatsApp Us</a>
-    <a href="/" class="back-link">Back to homepage</a>
-  </div>
-</section>
+      <div class="contact-details">
+        <p><span>Phone:</span> <a href="tel:+447850671304">${phone}</a></p>
+        <p><span>Email:</span> <a href="mailto:${email}">${email}</a></p>
+      </div>
 
-</main>
+      <div class="contact-actions">
+        <a href="tel:+447850671304" class="btn primary-call">Call Now</a>
+        <a href="https://wa.me/447850671304" target="_blank" rel="noopener" class="btn whatsapp-btn">WhatsApp Us</a>
+        <a href="/" class="back-link">Back to homepage</a>
+      </div>
+    </section>
+  </main>
 </body>
-</html>`  
-};
+</html>`
+  };
 }
 
 function generatePages() {
