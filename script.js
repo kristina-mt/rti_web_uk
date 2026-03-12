@@ -1,103 +1,169 @@
 console.log("Script loaded!");
 
-window.addEventListener("DOMContentLoaded", () => {
-  const form = document.querySelector("form");
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.querySelector('form[name="contact"]');
+  const navLinksMenu = document.getElementById("navLinks");
+  const hamburger = document.getElementById("hamburger");
+  const backToTop = document.getElementById("backToTop");
+  const animatedSections = document.querySelectorAll(".section-fade-left");
+  const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+  const allSectionsWithId = document.querySelectorAll("section[id]");
+  const hiddenDate = document.getElementById("submitted-at");
 
+  /* ===========================
+     HELPERS
+  =========================== */
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  const closeMobileMenu = () => {
+    if (navLinksMenu) {
+      navLinksMenu.classList.remove("show");
+    }
+    if (hamburger) {
+      hamburger.setAttribute("aria-expanded", "false");
+    }
+  };
+
+  const toggleMobileMenu = () => {
+    if (!navLinksMenu || !hamburger) return;
+    const isOpen = navLinksMenu.classList.toggle("show");
+    hamburger.setAttribute("aria-expanded", String(isOpen));
+  };
+
+  const setError = (field, message) => {
+    if (!field || !form) return;
+    const errorEl = form.querySelector(`[data-error-for="${field.name}"]`);
+    if (errorEl) {
+      errorEl.textContent = message;
+    }
+    field.setAttribute("aria-invalid", message ? "true" : "false");
+  };
+
+  const clearError = (field) => {
+    setError(field, "");
+  };
+
+  const validateField = (field) => {
+    if (!field) return true;
+
+    const value = field.value.trim();
+
+    if (!value) {
+      setError(field, "This field is required.");
+      return false;
+    }
+
+    if (field.type === "email" && !emailRegex.test(value)) {
+      setError(field, "Please enter a valid email address.");
+      return false;
+    }
+
+    clearError(field);
+    return true;
+  };
+
+  /* ===========================
+     FORM VALIDATION
+  =========================== */
   if (form) {
+    const nameField = form.querySelector('input[name="name"]');
+    const emailField = form.querySelector('input[name="email"]');
+    const messageField = form.querySelector('textarea[name="message"]');
+
+    [nameField, emailField, messageField].forEach((field) => {
+      if (!field) return;
+
+      field.addEventListener("input", () => {
+        if (field.value.trim()) {
+          validateField(field);
+        } else {
+          clearError(field);
+          field.setAttribute("aria-invalid", "false");
+        }
+      });
+
+      field.addEventListener("blur", () => {
+        validateField(field);
+      });
+    });
+
     form.addEventListener("submit", (e) => {
-      const name = form.querySelector('input[name="name"]');
-      const email = form.querySelector('input[name="email"]');
-      const message = form.querySelector('textarea[name="message"]');
+      const isNameValid = validateField(nameField);
+      const isEmailValid = validateField(emailField);
+      const isMessageValid = validateField(messageField);
 
-      const nameError = form.querySelector('[data-error-for="name"]');
-      const emailError = form.querySelector('[data-error-for="email"]');
-      const messageError = form.querySelector('[data-error-for="message"]');
-
-      if (nameError) nameError.textContent = "";
-      if (emailError) emailError.textContent = "";
-      if (messageError) messageError.textContent = "";
-
-      let hasError = false;
-
-      if (!name.value.trim()) {
-        if (nameError) nameError.textContent = "This field is required.";
-        hasError = true;
-      }
-
-      if (!email.value.trim()) {
-        if (emailError) emailError.textContent = "This field is required.";
-        hasError = true;
-      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
-        if (emailError) emailError.textContent = "Please enter a valid email address.";
-        hasError = true;
-      }
-
-      if (!message.value.trim()) {
-        if (messageError) messageError.textContent = "This field is required.";
-        hasError = true;
-      }
-
-      if (hasError) {
+      if (!isNameValid || !isEmailValid || !isMessageValid) {
         e.preventDefault();
+
+        const firstInvalidField = [nameField, emailField, messageField].find(
+          (field) => field && field.getAttribute("aria-invalid") === "true"
+        );
+
+        if (firstInvalidField) {
+          firstInvalidField.focus();
+        }
       }
     });
   }
 
-  // Smooth scroll
-  document.querySelectorAll(".nav-links a").forEach((link) => {
-    link.addEventListener("click", function (e) {
-      const href = this.getAttribute("href");
+  /* ===========================
+     SUBMITTED DATE
+  =========================== */
+  if (hiddenDate) {
+    hiddenDate.value = new Date().toLocaleString("en-GB");
+  }
 
-      if (href && href.startsWith("#")) {
-        e.preventDefault();
-        const target = document.querySelector(href);
+  /* ===========================
+     SMOOTH SCROLL + MOBILE MENU
+  =========================== */
+  navLinks.forEach((link) => {
+    link.addEventListener("click", (e) => {
+      const href = link.getAttribute("href");
+      if (!href || !href.startsWith("#")) return;
 
-        if (target) {
-          target.scrollIntoView({ behavior: "smooth" });
-        }
+      const target = document.querySelector(href);
+      if (!target) return;
 
-        const navLinks = document.getElementById("navLinks");
-        if (navLinks) {
-          navLinks.classList.remove("show");
-        }
-      }
+      e.preventDefault();
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+      closeMobileMenu();
     });
   });
 
-  // Active section highlight
-  window.addEventListener("scroll", () => {
-    const sections = document.querySelectorAll("section");
-    const navLinks = document.querySelectorAll(".nav-links a");
-    let currentSection = "";
+  /* ===========================
+     ACTIVE NAV LINK
+  =========================== */
+  const updateActiveNavLink = () => {
+    let currentSectionId = "";
 
-    sections.forEach((section) => {
+    allSectionsWithId.forEach((section) => {
       const rect = section.getBoundingClientRect();
-      if (rect.top <= 150 && rect.bottom >= 150) {
-        currentSection = section.id;
+      const triggerTop = 140;
+
+      if (rect.top <= triggerTop && rect.bottom >= triggerTop) {
+        currentSectionId = section.id;
       }
     });
 
     navLinks.forEach((link) => {
-      link.classList.remove("active");
-      if (link.getAttribute("href") === "#" + currentSection) {
-        link.classList.add("active");
-      }
+      const href = link.getAttribute("href");
+      link.classList.toggle("active", href === `#${currentSectionId}`);
     });
-  });
+  };
 
-  // Hidden submitted date
-  const now = new Date().toLocaleString("en-GB");
-  const hiddenDate = document.getElementById("submitted-at");
-  if (hiddenDate) {
-    hiddenDate.value = now;
-  }
+  window.addEventListener("scroll", updateActiveNavLink);
+  updateActiveNavLink();
 
-  // Back to Top button
-  const backToTop = document.getElementById("backToTop");
+  /* ===========================
+     BACK TO TOP
+  =========================== */
   if (backToTop) {
-    window.addEventListener("scroll", () => {
-      backToTop.style.display = window.scrollY > 200 ? "block" : "none";
-    });
+    const toggleBackToTop = () => {
+      backToTop.style.display = window.scrollY > 300 ? "block" : "none";
+    };
+
+    window.addEventListener("scroll", toggleBackToTop);
+    toggleBackToTop();
 
     backToTop.addEventListener("click", () => {
       window.scrollTo({
@@ -107,29 +173,53 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Hamburger menu
-  const hamburger = document.getElementById("hamburger");
-  const navLinksMenu = document.getElementById("navLinks");
-
+  /* ===========================
+     HAMBURGER MENU
+  =========================== */
   if (hamburger && navLinksMenu) {
-    hamburger.addEventListener("click", () => {
-      navLinksMenu.classList.toggle("show");
+    hamburger.setAttribute("aria-expanded", "false");
+    hamburger.setAttribute("aria-label", "Toggle navigation menu");
+
+    hamburger.addEventListener("click", (e) => {
+      e.stopPropagation();
+      toggleMobileMenu();
+    });
+
+    document.addEventListener("click", (e) => {
+      const clickedInsideMenu =
+        navLinksMenu.contains(e.target) || hamburger.contains(e.target);
+
+      if (!clickedInsideMenu) {
+        closeMobileMenu();
+      }
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 1024) {
+        closeMobileMenu();
+      }
     });
   }
 
-  // Section animation
-  const sections = document.querySelectorAll("section");
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.1 }
-  );
+  /* ===========================
+     SECTION ANIMATION
+  =========================== */
+  if (animatedSections.length > 0) {
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.12,
+        rootMargin: "0px 0px -40px 0px"
+      }
+    );
 
-  sections.forEach((section) => observer.observe(section));
+    animatedSections.forEach((section) => observer.observe(section));
+  }
 });
