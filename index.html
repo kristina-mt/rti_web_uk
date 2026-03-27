@@ -28,6 +28,7 @@
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" href="images/logo.png" />
   <link rel="preload" as="image" href="images/logo.png" type="image/png" />
+  <link rel="preload" as="image" href="images/hero-desktop.webp" type="image/webp" />
   <link rel="stylesheet" href="styles.css" />
 
   <link
@@ -215,6 +216,17 @@
     </div>
 
     <header class="hero">
+      <img
+        src="images/hero-desktop.webp"
+        srcset="images/hero-mobile.webp 800w, images/hero-desktop.webp 1600w"
+        sizes="100vw"
+        alt="RTi Auto Locksmith vehicle service"
+        class="hero-bg"
+        fetchpriority="high"
+      />
+
+      <div class="hero-overlay"></div>
+
       <img src="images/logo.png" alt="RTi Auto Locksmith Logo" class="logo-left" />
 
       <h1>24/7 Mobile Auto Locksmith Across North West England</h1>
