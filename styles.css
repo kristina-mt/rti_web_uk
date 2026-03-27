@@ -56,8 +56,7 @@ body {
   font-size: 18px;
   line-height: 1.65;
   color: var(--text-main);
-  background:
-    radial-gradient(circle at top left, #23283a 0%, #0b0d13 35%, #05060a 75%);
+  background: radial-gradient(circle at top left, #23283a 0%, #0b0d13 35%, #05060a 75%);
 }
 
 main {
@@ -72,6 +71,7 @@ img {
 
 a {
   color: inherit;
+  word-break: break-word;
 }
 
 /* ===========================
@@ -146,6 +146,7 @@ section + section {
   opacity: 0;
   transform: translateX(-22px);
   transition: opacity 0.65s ease, transform 0.65s ease;
+  will-change: opacity, transform;
 }
 
 .section-fade-left.visible {
@@ -200,6 +201,10 @@ section + section {
   gap: 12px;
   justify-content: center;
   align-items: center;
+}
+
+.nav-links li {
+  margin: 0;
 }
 
 .nav-links li a {
@@ -380,6 +385,7 @@ section + section {
 .hero-phone a:hover {
   text-decoration: underline;
 }
+
 /* ===========================
    BUTTONS
 =========================== */
@@ -404,7 +410,8 @@ section + section {
     transform 0.16s ease,
     box-shadow 0.2s ease,
     background 0.2s ease,
-    color 0.2s ease;
+    color 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .btn,
@@ -580,10 +587,7 @@ section + section {
   margin-right: auto;
 }
 
-.city-links {
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-}
-
+.city-links,
 .nearby-links {
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
@@ -592,16 +596,19 @@ section + section {
 .city-links li,
 .nearby-links li {
   margin: 0;
+  min-width: 0;
 }
 
 .location-links a,
 .city-links a,
 .nearby-links a {
   display: block;
+  height: 100%;
   padding: 14px 16px;
   border-radius: 14px;
   text-decoration: none;
   font-weight: 700;
+  line-height: 1.5;
   color: #fff;
   background: rgba(255, 204, 0, 0.08);
   border: 1px solid rgba(255, 204, 0, 0.18);
@@ -796,10 +803,18 @@ section + section {
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 20px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
 }
 
 .city-page section {
-  margin-bottom: 28px;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  clear: both;
 }
 
 .city-hero {
@@ -837,25 +852,39 @@ section + section {
   text-decoration: underline;
 }
 
-.city-page .section-fade-left {
+.city-page .section-fade-left,
+.city-page .contact-card {
+  display: block;
+  width: 100%;
   margin: 0;
   padding: 30px 26px;
-  color: #fff;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
 }
 
-.city-page .section-fade-left h2 {
+.city-page .section-fade-left {
+  transform-origin: center;
+}
+
+.city-page .section-fade-left h2,
+.city-page .contact-card h2 {
   margin-bottom: 18px;
   color: var(--primary);
 }
 
 .city-page .section-fade-left p,
-.city-page .section-fade-left li {
+.city-page .section-fade-left li,
+.city-page .contact-card p,
+.city-page .contact-card li {
   line-height: 1.85;
   color: #ffffff;
 }
 
-.city-page .section-fade-left ul {
+.city-page .section-fade-left ul,
+.city-page .contact-card ul {
   padding-left: 20px;
+  margin-top: 12px;
 }
 
 .city-page .contact-card {
@@ -1066,6 +1095,198 @@ footer a:hover {
 }
 
 /* ===========================
+   HERO RTI HOME
+=========================== */
+.hero-rti-home {
+  position: relative;
+  min-height: 640px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 0 0 24px 24px;
+  background: #111;
+}
+
+.hero-rti-home .hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 1;
+}
+
+.hero-rti-home .hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.82) 0%, rgba(0, 0, 0, 0.62) 48%, rgba(0, 0, 0, 0.38) 100%);
+}
+
+.hero-content-wrapper {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 3.5rem 1.25rem 3rem;
+}
+
+.hero-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.hero-rti-home .logo-left {
+  width: 150px;
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 0.8rem;
+}
+
+.hero-eyebrow {
+  margin: 0;
+  color: #d4af37;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hero-content {
+  max-width: 760px;
+  color: #fff;
+}
+
+.hero-rti-home h1 {
+  margin: 0 0 0.8rem;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  line-height: 1.08;
+  font-weight: 800;
+  color: #fff;
+}
+
+.hero-rti-home h2 {
+  margin: 0 0 1.2rem;
+  font-size: clamp(1.05rem, 2vw, 1.5rem);
+  line-height: 1.45;
+  font-weight: 500;
+  color: #f1f1f1;
+}
+
+.hero-rti-home .hero-phone {
+  margin: 0 0 1rem;
+  font-size: 1.08rem;
+  color: #fff;
+}
+
+.hero-rti-home .hero-phone strong {
+  color: #d4af37;
+}
+
+.hero-rti-home .hero-phone a {
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.hero-rti-home .hero-phone a:hover {
+  color: #d4af37;
+}
+
+.hero-lead {
+  margin: 0 0 1rem;
+  font-size: 1.08rem;
+  line-height: 1.8;
+  color: #f7f7f7;
+}
+
+.hero-text {
+  margin: 0 0 1.25rem;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: #e3e3e3;
+}
+
+.hero-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin: 1.2rem 0 1.5rem;
+}
+
+.hero-highlights span {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.58rem 0.95rem;
+  border-radius: 999px;
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  background: rgba(212, 175, 55, 0.12);
+  color: #f0c75e;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.hero-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  align-items: center;
+}
+
+.secondary-btn {
+  background: transparent;
+  border: 1px solid #d4af37;
+  color: #d4af37;
+}
+
+.secondary-btn:hover {
+  background: #d4af37;
+  color: #111;
+}
+
+.hero-rti-home .btn {
+  min-height: 48px;
+  padding: 0.85rem 1.3rem;
+  border-radius: 12px;
+  font-weight: 700;
+}
+
+.hero-rti-home .primary-call {
+  background: #d4af37;
+  border: 1px solid #d4af37;
+  color: #111;
+}
+
+.hero-rti-home .primary-call:hover {
+  background: #e1be57;
+  border-color: #e1be57;
+}
+
+.hero-rti-home .whatsapp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  background: transparent;
+  border: 1px solid #25d366;
+  color: #fff;
+}
+
+.hero-rti-home .whatsapp-btn:hover {
+  background: #25d366;
+  color: #111;
+}
+
+.hero-rti-home .whatsapp-icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+/* ===========================
    RESPONSIVE
 =========================== */
 @media (max-width: 1024px) {
@@ -1140,7 +1361,8 @@ footer a:hover {
   #service-areas,
   #faq,
   .postal-block,
-  .city-page .section-fade-left {
+  .city-page .section-fade-left,
+  .city-page .contact-card {
     padding: 28px 18px;
   }
 
@@ -1154,8 +1376,49 @@ footer a:hover {
     grid-template-columns: 1fr;
   }
 
+  .city-page {
+    gap: 20px;
+    padding: 0 16px 32px;
+  }
+
+  .city-hero {
+    padding: 36px 16px 40px;
+  }
+
   .city-hero h2 {
     font-size: 1.6rem;
+  }
+
+  .hero-rti-home {
+    min-height: auto;
+    border-radius: 0 0 18px 18px;
+  }
+
+  .hero-content-wrapper {
+    padding: 2.6rem 1rem 2.4rem;
+  }
+
+  .hero-rti-home .logo-left {
+    width: 120px;
+  }
+
+  .hero-highlights {
+    gap: 0.55rem;
+  }
+
+  .hero-highlights span {
+    font-size: 0.85rem;
+    padding: 0.5rem 0.8rem;
+  }
+
+  .hero-cta {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-rti-home .btn {
+    width: 100%;
+    justify-content: center;
   }
 
   #backToTop {
@@ -1187,450 +1450,5 @@ footer a:hover {
   .city-page .contact-actions {
     flex-direction: column;
     align-items: stretch;
-  }
-}.hero-rti-home {
-  position: relative;
-  min-height: 640px;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  border-radius: 0 0 24px 24px;
-  background: #111;
-}
-
-.hero-rti-home .hero-bg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  z-index: 1;
-}
-
-.hero-rti-home .hero-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  background:
-    linear-gradient(90deg, rgba(0, 0, 0, 0.82) 0%, rgba(0, 0, 0, 0.62) 48%, rgba(0, 0, 0, 0.38) 100%);
-}
-
-.hero-content-wrapper {
-  position: relative;
-  z-index: 3;
-  width: 100%;
-  max-width: 1240px;
-  margin: 0 auto;
-  padding: 3.5rem 1.25rem 3rem;
-}
-
-.hero-brand {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-bottom: 1rem;
-}
-
-.hero-rti-home .logo-left {
-  width: 150px;
-  max-width: 100%;
-  height: auto;
-  margin-bottom: 0.8rem;
-}
-
-.hero-eyebrow {
-  margin: 0;
-  color: #d4af37;
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.hero-content {
-  max-width: 760px;
-  color: #fff;
-}
-
-.hero-rti-home h1 {
-  margin: 0 0 0.8rem;
-  font-size: clamp(2.2rem, 5vw, 4rem);
-  line-height: 1.08;
-  font-weight: 800;
-  color: #fff;
-}
-
-.hero-rti-home h2 {
-  margin: 0 0 1.2rem;
-  font-size: clamp(1.05rem, 2vw, 1.5rem);
-  line-height: 1.45;
-  font-weight: 500;
-  color: #f1f1f1;
-}
-
-.hero-phone {
-  margin: 0 0 1rem;
-  font-size: 1.08rem;
-  color: #fff;
-}
-
-.hero-phone strong {
-  color: #d4af37;
-}
-
-.hero-phone a {
-  color: #fff;
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.hero-phone a:hover {
-  color: #d4af37;
-}
-
-.hero-lead {
-  margin: 0 0 1rem;
-  font-size: 1.08rem;
-  line-height: 1.8;
-  color: #f7f7f7;
-}
-
-.hero-text {
-  margin: 0 0 1.25rem;
-  font-size: 1rem;
-  line-height: 1.75;
-  color: #e3e3e3;
-}
-
-.hero-highlights {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.7rem;
-  margin: 1.2rem 0 1.5rem;
-}
-
-.hero-highlights span {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.58rem 0.95rem;
-  border-radius: 999px;
-  border: 1px solid rgba(212, 175, 55, 0.45);
-  background: rgba(212, 175, 55, 0.12);
-  color: #f0c75e;
-  font-size: 0.92rem;
-  font-weight: 600;
-}
-
-.hero-cta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.85rem;
-  align-items: center;
-}
-
-.secondary-btn {
-  background: transparent;
-  border: 1px solid #d4af37;
-  color: #d4af37;
-}
-
-.secondary-btn:hover {
-  background: #d4af37;
-  color: #111;
-}
-
-.hero-rti-home .btn {
-  min-height: 48px;
-  padding: 0.85rem 1.3rem;
-  border-radius: 12px;
-  font-weight: 700;
-}
-
-.hero-rti-home .primary-call {
-  background: #d4af37;
-  border: 1px solid #d4af37;
-  color: #111;
-}
-
-.hero-rti-home .primary-call:hover {
-  background: #e1be57;
-  border-color: #e1be57;
-}
-
-.hero-rti-home .whatsapp-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-  background: transparent;
-  border: 1px solid #25d366;
-  color: #fff;
-}
-
-.hero-rti-home .whatsapp-btn:hover {
-  background: #25d366;
-  color: #111;
-}
-
-.hero-rti-home .whatsapp-icon {
-  width: 18px;
-  height: 18px;
-  object-fit: contain;
-}
-
-@media (max-width: 768px) {
-  .hero-rti-home {
-    min-height: auto;
-    border-radius: 0 0 18px 18px;
-  }
-
-  .hero-content-wrapper {
-    padding: 2.6rem 1rem 2.4rem;
-  }
-
-  .hero-rti-home .logo-left {
-    width: 120px;
-  }
-
-  .hero-highlights {
-    gap: 0.55rem;
-  }
-
-  .hero-highlights span {
-    font-size: 0.85rem;
-    padding: 0.5rem 0.8rem;
-  }
-
-  .hero-cta {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .hero-rti-home .btn {
-    width: 100%;
-    justify-content: center;
-  }
-}
-.hero-rti-home {
-  position: relative;
-  min-height: 640px;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  border-radius: 0 0 24px 24px;
-  background: #111;
-}
-
-.hero-rti-home .hero-bg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  z-index: 1;
-}
-
-.hero-rti-home .hero-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  background:
-    linear-gradient(90deg, rgba(0, 0, 0, 0.82) 0%, rgba(0, 0, 0, 0.62) 48%, rgba(0, 0, 0, 0.38) 100%);
-}
-
-.hero-content-wrapper {
-  position: relative;
-  z-index: 3;
-  width: 100%;
-  max-width: 1240px;
-  margin: 0 auto;
-  padding: 3.5rem 1.25rem 3rem;
-}
-
-.hero-brand {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-bottom: 1rem;
-}
-
-.hero-rti-home .logo-left {
-  width: 150px;
-  max-width: 100%;
-  height: auto;
-  margin-bottom: 0.8rem;
-}
-
-.hero-eyebrow {
-  margin: 0;
-  color: #d4af37;
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.hero-content {
-  max-width: 760px;
-  color: #fff;
-}
-
-.hero-rti-home h1 {
-  margin: 0 0 0.8rem;
-  font-size: clamp(2.2rem, 5vw, 4rem);
-  line-height: 1.08;
-  font-weight: 800;
-  color: #fff;
-}
-
-.hero-rti-home h2 {
-  margin: 0 0 1.2rem;
-  font-size: clamp(1.05rem, 2vw, 1.5rem);
-  line-height: 1.45;
-  font-weight: 500;
-  color: #f1f1f1;
-}
-
-.hero-phone {
-  margin: 0 0 1rem;
-  font-size: 1.08rem;
-  color: #fff;
-}
-
-.hero-phone strong {
-  color: #d4af37;
-}
-
-.hero-phone a {
-  color: #fff;
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.hero-phone a:hover {
-  color: #d4af37;
-}
-
-.hero-lead {
-  margin: 0 0 1rem;
-  font-size: 1.08rem;
-  line-height: 1.8;
-  color: #f7f7f7;
-}
-
-.hero-text {
-  margin: 0 0 1.25rem;
-  font-size: 1rem;
-  line-height: 1.75;
-  color: #e3e3e3;
-}
-
-.hero-highlights {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.7rem;
-  margin: 1.2rem 0 1.5rem;
-}
-
-.hero-highlights span {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.58rem 0.95rem;
-  border-radius: 999px;
-  border: 1px solid rgba(212, 175, 55, 0.45);
-  background: rgba(212, 175, 55, 0.12);
-  color: #f0c75e;
-  font-size: 0.92rem;
-  font-weight: 600;
-}
-
-.hero-cta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.85rem;
-  align-items: center;
-}
-
-.secondary-btn {
-  background: transparent;
-  border: 1px solid #d4af37;
-  color: #d4af37;
-}
-
-.secondary-btn:hover {
-  background: #d4af37;
-  color: #111;
-}
-
-.hero-rti-home .btn {
-  min-height: 48px;
-  padding: 0.85rem 1.3rem;
-  border-radius: 12px;
-  font-weight: 700;
-}
-
-.hero-rti-home .primary-call {
-  background: #d4af37;
-  border: 1px solid #d4af37;
-  color: #111;
-}
-
-.hero-rti-home .primary-call:hover {
-  background: #e1be57;
-  border-color: #e1be57;
-}
-
-.hero-rti-home .whatsapp-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-  background: transparent;
-  border: 1px solid #25d366;
-  color: #fff;
-}
-
-.hero-rti-home .whatsapp-btn:hover {
-  background: #25d366;
-  color: #111;
-}
-
-.hero-rti-home .whatsapp-icon {
-  width: 18px;
-  height: 18px;
-  object-fit: contain;
-}
-
-@media (max-width: 768px) {
-  .hero-rti-home {
-    min-height: auto;
-    border-radius: 0 0 18px 18px;
-  }
-
-  .hero-content-wrapper {
-    padding: 2.6rem 1rem 2.4rem;
-  }
-
-  .hero-rti-home .logo-left {
-    width: 120px;
-  }
-
-  .hero-highlights {
-    gap: 0.55rem;
-  }
-
-  .hero-highlights span {
-    font-size: 0.85rem;
-    padding: 0.5rem 0.8rem;
-  }
-
-  .hero-cta {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .hero-rti-home .btn {
-    width: 100%;
-    justify-content: center;
   }
 }
