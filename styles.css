@@ -2,14 +2,14 @@
    DESIGN VARIABLES
 =========================== */
 :root {
-  --bg-page: #05060a;
-  --bg-alt: #0d1117;
-  --surface: #141926;
-  --surface-2: #1a2030;
-  --surface-3: #0f131d;
+  --bg-page: #494c57;
+  --bg-alt: #4e2c9e;
+  --surface: #404655;
+  --surface-2: #541a6b;
+  --surface-3: #3c414e;
 
-  --primary: #ffcc00;
-  --primary-dark: #e0af00;
+  --primary: #f7c605;
+  --primary-dark: #8f7825;
   --primary-soft: rgba(255, 204, 0, 0.12);
   --primary-border: rgba(255, 204, 0, 0.24);
 
@@ -17,7 +17,7 @@
   --text-muted: #b4b8c7;
   --text-soft: #8a90a3;
 
-  --white-soft: rgba(255, 255, 255, 0.08);
+  --white-soft: rgba(123, 85, 128, 0.08);
   --white-border: rgba(255, 255, 255, 0.1);
 
   --shadow-soft: 0 16px 40px rgba(0, 0, 0, 0.45);
@@ -56,7 +56,7 @@ body {
   font-size: 18px;
   line-height: 1.65;
   color: var(--text-main);
-  background: radial-gradient(circle at top left, #23283a 0%, #0b0d13 35%, #05060a 75%);
+  background: radial-gradient(circle at top left, #3b4772 0%, #0b0d13 35%, #05060a 75%);
 }
 
 main {
